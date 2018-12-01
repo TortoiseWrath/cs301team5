@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['username'])) {
 	// User not logged in
-	//header('Location: login.php');
+	header('Location: login.php');
 	die();
 }
 ?>
