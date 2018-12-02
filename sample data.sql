@@ -31,21 +31,46 @@ VALUES
 
 INSERT INTO PAYMENT_INFO
 VALUES
-  ("8800784593457364", "2020-10-01", "Paul Bryant", 335, 1, "paul"),
-  ("8800473689234657", "2021-08-01", "Paul Bryant", 245, 1, "paul"),
-  ("7688999934567658", "2019-07-01", "Mary Brown", 546, 1, "mary"),
-  ("8347362536890058", "2020-03-01", "John Smith", 783, 1, "john"),
-  ("0987654323456789", "2020-07-01", "Jimmy Neutron", 789, 1, "jimmy"),
-  ("8467182984301334", "2021-09-01", "Jimmy Neutron", 894, 1, "jimmy"),
-  ("8746893283746190", "2022-04-01", "Bob Light", 938, 0, "bob"),
-  ("4832910482914738", "2019-09-01", "James McDonald", 834, 1, "james"),
-  ("4832701982398432", "2020-05-01", "Bob Light", 348, 1, "bob"),
-  ("8876785654434566", "2021-11-01", "Mary Brown", 677, 1, "mary"),
-  ("1010298329019238", "2020-09-01", "David Forster", 222, 0, "david"),
-  ("3820942390849333", "2022-12-01", "Nick Saban", 069, 1, "user1"),
-  ("4328791083474739", "2019-01-01", "Kevin Christianson", 234, 1, "kevin"),
-  ("6942011843723899", "2020-03-01", "Harry Potter", 420, 0, "clear"),
-  ("2390490234042304", "2021-04-01", "Super Saban", 120, 1, "user1");
+<<<<<<<
+HEAD
+("8800784593457364",
+"2020-10-01",
+"Paul Bryant",
+335,
+1,
+"paul"
+),
+("8800473689234657", "2021-08-01", "Paul Bryant", 245, 1, "paul"),
+("7688999934567658", "2019-07-01", "Mary Brown", 546, 1, "mary"),
+("8347362536890058", "2020-03-01", "John Smith", 783, 1, "john"),
+("0987654323456789", "2020-07-01", "Jimmy Neutron", 789, 1, "jimmy"),
+("8467182984301334", "2021-09-01", "Jimmy Neutron", 894, 1, "jimmy"),
+("8746893283746190", "2022-04-01", "Bob Light", 938, 0, "bob"),
+("4832910482914738", "2019-09-01", "James McDonald", 834, 1, "james"),
+("4832701982398432", "2020-05-01", "Bob Light", 348, 1, "bob"),
+("8876785654434566", "2021-11-01", "Mary Brown", 677, 1, "mary"),
+("1010298329019238", "2020-09-01", "David Forster", 222, 0, "david"),
+("3820942390849333", "2022-12-01", "Nick Saban", 069, 1, "user1"),
+("4328791083474739", "2019-01-01", "Kevin Christianson", 234, 1, "kevin"),
+("6942011843723899", "2020-03-01", "Harry Potter", 420, 0, "clear"),
+("2390490234042304", "2021-04-01", "Super Saban", 120, 1, "user1");
+=======
+("8800784593457364", "2020-10-01", "Paul Bryant", 335, 1, "paul"),
+("8800473689234657", "2021-08-01", "Paul Bryant", 245, 1, "paul"),
+("7688999934567658", "2019-07-01", "Mary Brown", 546, 1, "mary"),
+("8347362536890058", "2020-03-01", "John Smith", 783, 1, "john"),
+("0987654323456789", "2020-07-01", "Jimmy Neutron", 789, 1, "jimmy"),
+("8467182984301334", "2021-09-01", "Jimmy Neutron", 894, 1, "jimmy"),
+("8746893283746190", "2022-04-01", "Bob Light", 938, 0, "bob"),
+("4832910482914738", "2019-09-01", "James McDonald", 834, 1, "james"),
+("4832701982398432", "2020-05-01", "Bob Light", 348, 1, "bob"),
+("8876785654434566", "2021-11-01", "Mary Brown", 677, 1, "mary"),
+("1010298329019238", "2020-09-01", "David Forster", 222, 0, "david"),
+("3820942390849333", "2022-12-01", "Nick Saban", 069, 1, "user1"),
+("4328791083474739", "2019-01-01", "Kevin Christianson", 234, 1, "kevin"),
+("6942011843723899", "2020-03-01", "Harry Potter", 420, 0, "clear"),
+("2390490234042304", "2021-04-01", "Super Saban", 120, 1, "user1");
+>>>>>>> 13997a539c3fde8ac821b7b9790db284a71716fe
 
 INSERT INTO THEATER
 VALUES
@@ -86,10 +111,15 @@ VALUES
 INSERT INTO PREFERS
 VALUES
   ("1", "jimmy"),
+  ("2", "jimmy"),
   ("2", "bsmith") ,
+  ("3", "bsmith") ,
   ("3", "ejones"),
+  ("4", "ejones"),
   ("4", "clear"),
-  ("5", "steve");
+  ("5", "clear"),
+  ("5", "steve"),
+  ("1", "steve");
 
 INSERT INTO ORDERS
 VALUES
@@ -136,23 +166,56 @@ VALUES
 
 INSERT INTO REVIEW
 VALUES
-  ("1", "movie was great lol", "Finding Nemo", 5, "jimmy"),
-  ("2", "too scary not for kids", "The Grinch" , 2, "mary"),
-  ("3", "too many superheroes" , "Avengers" , "3", "bob"),
-  ("4", "queen is pretty good" , "Bohemian Rhapsody" , "4", "clear"),
-  ("5", "yeah great effects" , "Star Wars" , 5, "clear"),
-  ("6", "morgan freeman is a god" , "The Shawshank Redemption" , 5, "clear"),
-  ("7", "violence is bad" , "Pulp Fiction" , 1, "clear"),
-  ("8", "what is going on" , "Inception" , 1, "clear"),
-  ("9", "outer space looked really good" , "Interstellar" , 4, "clear"),
-  ("10", "i don't like black and white movies" , "Casablanca" , 2, "clear"),
-  ("11", "too many lions needed other animals" , "The Lion King" , 2, "clear"),
-  ("12", "lions are good" , "The Lion King" , 5, "clear"),
-  ("13", "buzz lightyear is a god" , "Toy Story" , 5, "clear"),
-  ("14", "too many balloons" , "Up" , 1, "clear"),
-  ("15", "movie made me like economics" , "The Wolf of Wall Street" , 1, "clear"),
-  ("16", "movie did a great job of symbolizing why fish are awesome" , "Finding Nemo" , 4, "clear"),
-  ("17", "queen is awful" , "Bohemian Rhapsody" , 1, "clear"),
-  ("18", "too complicated" , "Up" , 1, "clear"),
-  ("19", "too simple" , "Inception" , 1, "clear"),
-  ("20", "christmas is insane" , "The Grinch" , 5, "clear");
+<<<<<<<
+HEAD
+("1",
+"movie was great lol",
+"Finding Nemo",
+5,
+"jimmy"
+),
+("2", "too scary not for kids", "The Grinch" , 2, "mary"),
+("3", "too many superheroes" , "Avengers" , "3", "bob"),
+("4", "queen is pretty good" , "Bohemian Rhapsody" , "4", "clear"),
+("5", "yeah great effects" , "Star Wars" , 5, "clear"),
+("6", "morgan freeman is a god" , "The Shawshank Redemption" , 5, "clear"),
+("7", "violence is bad" , "Pulp Fiction" , 1, "clear"),
+("8", "what is going on" , "Inception" , 1, "clear"),
+("9", "outer space looked really good" , "Interstellar" , 4, "clear"),
+("10", "i don't like black and white movies" , "Casablanca" , 2, "clear"),
+("11", "too many lions needed other animals" , "The Lion King" , 2, "clear"),
+("12", "lions are good" , "The Lion King" , 5, "clear"),
+("13", "buzz lightyear is a god" , "Toy Story" , 5, "clear"),
+("14", "too many balloons" , "Up" , 1, "clear"),
+("15", "movie made me like economics" , "The Wolf of Wall Street" , 1, "clear"),
+("16", "movie did a great job of symbolizing why fish are awesome" , "Finding Nemo" , 4, "clear"),
+("17", "queen is awful" , "Bohemian Rhapsody" , 1, "clear"),
+("18", "too complicated" , "Up" , 1, "clear"),
+("19", "too simple" , "Inception" , 1, "clear"),
+("20", "christmas is insane" , "The Grinch" , 5, "clear");
+=======
+("1", "movie was great lol", "Finding Nemo", 5, "jimmy"),
+("2", "too scary not for kids", "The Grinch" , 2, "mary"),
+("3", "too many superheroes" , "Avengers" ,"3", "bob"),
+("4", "queen is pretty good" , "Bohemian Rhapsody" ,"4", "clear"),
+("5", "yeah great effects" , "Star Wars" , 5, "clear"),
+("6", "morgan freeman is a god" , "The Shawshank Redemption" , 5, "clear"),
+("7", "violence is bad" , "Pulp Fiction" , 1, "clear"),
+("8", "what is going on" , "Inception" , 1, "clear"),
+("9", "outer space looked really good" , "Interstellar" , 4, "clear"),
+("10", "i don't like black and white movies" , "Casablanca" , 2, "clear"),
+("11", "too many lions needed other animals" , "The Lion King" , 2, "clear"),
+("12", "lions are good" , "The Lion King" , 5, "clear"),
+("13", "buzz lightyear is a god" , "Toy Story" , 5, "clear"),
+("14", "too many balloons" , "Up" , 1, "clear"),
+("15", "movie made me like economics" , "The Wolf of Wall Street" , 1, "clear"),
+("16", "movie did a great job of symbolizing why fish are awesome" , "Finding Nemo" , 4, "clear"),
+("17", "queen is awful" , "Bohemian Rhapsody" , 1, "clear"),
+("18", "too complicated" , "Up" , 1, "clear"),
+("19", "too simple" , "Inception" , 1, "clear"),
+("20", "christmas is insane" , "The Grinch" , 5, "clear");
+
+INSERT INTO SYSTEMINFO
+VALUES
+  (5, 30, 20, "football");
+>>>>>>> 13997a539c3fde8ac821b7b9790db284a71716fe
