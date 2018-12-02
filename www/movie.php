@@ -38,8 +38,9 @@ $title = $_GET['title'];
 	?></a>
 	<p class="reviews"><a href="review.php?title=<?=urlencode($_GET['title'])?>"><?=number_format($reviews).' Fan Rating'.($reviews==1?'':'s')?></a>
 </aside>
-<nav>
-	<button formaction="overview.php?title=<?=urlencode($_GET['title'])?>">Overview</button>
-	<button formaction="review.php?title=<?=urlencode($_GET['title'])?>">Movie Review</button>
-	<button formaction="choosetheater.php?title=<?=urlencode($_GET['title'])?>">Choose Theater</button>
-</nav>
+<form method="GET">
+	<input type="hidden" name="title" value="<?=$_GET['title']?>">
+	<button formaction="overview.php">Overview</button>
+	<button formaction="review.php">Movie Review</button>
+	<button formaction="choosetheater.php">Choose Theater</button>
+</form>
