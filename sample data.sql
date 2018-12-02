@@ -41,9 +41,12 @@ VALUES
 ("4832910482914738", "2019-09-00", "James McDonald", 834, 1, "james"),
 ("4832701982398432", "2020-05-00", "Bob Light", 348, 1, "bob"),
 ("8876785654434566", "2021-11-00", "Mary Brown", 677, 1, "mary"),
+("3213029390392039", "2020-11-00", "Mary Brown", 999, 1, "mary"),
 ("1010298329019238", "2020-09-00", "David Forster", 222, 0, "david"),
 ("3820942390849333", "2022-12-00", "Nick Saban", 069, 1, "user1"),
+("1234525436626752", "2021-12-00", "Nick Saban", 212, 1, "user1"),
 ("4328791083474739", "2019-01-00", "Kevin Christianson", 234, 1, "kevin"),
+("2928384930202033", "2020-01-00", "Kevin Christianson", 885, 1, "kevin"),
 ("6942011843723899", "2020-03-00", "Harry Potter", 420, 0, "clear"),
 ("2390490234042304", "2021-04-00", "Super Saban", 120, 1, "user1");
 
@@ -86,10 +89,15 @@ VALUES
 INSERT INTO PREFERS
 VALUES
 ("1", "jimmy"),
+("2", "jimmy"),
 ("2", "bsmith") ,
+("3", "bsmith") ,
 ("3", "ejones"),
+("4", "ejones"),
 ("4", "clear"),
-("5", "steve");
+("5", "clear"),
+("5", "steve"),
+("1", "steve");
 
 INSERT INTO ORDERS
 VALUES
