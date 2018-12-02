@@ -2,7 +2,7 @@
 
 $DB_USER = 'root';
 $DB_PASS = '';
-$DB_HOST = 'localhost';
+$DB_HOST = '127.0.0.1';
 $DB_NAME = 'cs301';
 
 $db = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
