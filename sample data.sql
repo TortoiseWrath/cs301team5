@@ -161,3 +161,5 @@ VALUES
 ("18", "too complicated" , "Up" , 1, "clear"),
 ("19", "too simple" , "Inception" , 1, "clear"),
 ("20", "christmas is insane" , "The Grinch" , 5, "clear");
+
+INSERT INTO SYSTEMINFO VALUES (5, 30, 20, "football");
