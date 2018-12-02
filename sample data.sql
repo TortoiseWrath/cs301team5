@@ -86,10 +86,15 @@ VALUES
 INSERT INTO PREFERS
 VALUES
 ("1", "jimmy"),
+("2", "jimmy"),
 ("2", "bsmith") ,
+("3", "bsmith") ,
 ("3", "ejones"),
+("4", "ejones"),
 ("4", "clear"),
-("5", "steve");
+("5", "clear"),
+("5", "steve"),
+("1", "steve");
 
 INSERT INTO ORDERS
 VALUES
