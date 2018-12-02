@@ -35,8 +35,8 @@ if(!isset($_SESSION['username'])) {
       <?php
       require_once('config.php');
 
-      $query = $db->prepare('SELECT orderID, title, status, totalTickets FROM ORDERS where username="jimmy"');
-
+      $query = $db->prepare('SELECT orderID, title, status, totalTickets FROM ORDERS where username=?');
+      $query->bind_param('s', $_SESSION['username']);
       $query->execute();
       $orderID = $title = $status = $totalTickets = NULL;
       $query->bind_result($orderID, $title, $status, $totalTickets);
