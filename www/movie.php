@@ -25,14 +25,14 @@ $title = $_GET['title'];
 	<p class="genre"><?=$genre?>
 	<p class="score"><a href="review.php?title=<?=urlencode($_GET['title'])?>"><?php
 		$roundedScore = round($avgScore * 2) / 2;
+		var_dump($roundedScore);
 		for($i = 1; $i <= $roundedScore; $i++) {
 			echo '<i class="fas fa-star"></i>';
-			$roundedScore--;
 		}
-		if($roundedScore % 1 > 0) {
+		if($roundedScore - floor($roundedScore)) {
 			echo '<i class="fas fa-star-half-alt"></i>';
 		}
-		for($i = ceil($roundedScore); $i <= 5; $i++) {
+		for($i = ceil($roundedScore) + 1; $i <= 5; $i++) {
 			echo '<i class="far fa-star"></i>';
 		}
 	?></a>
