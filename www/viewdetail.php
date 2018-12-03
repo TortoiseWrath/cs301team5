@@ -32,7 +32,7 @@ if(!isset($_SESSION['username'])) {
       print_r($result)
     ?>
 
-    <h2>Title: <?=$result['title']?></h2>
+    <p><strong><a href="movie.php?title=<?=urlencode($result['title'])?>"><?=htmlspecialchars($result['title'])?></a></strong></p>
     <p>
       <span><?=$result['rating']?>, </span>
       <span>
@@ -58,9 +58,9 @@ if(!isset($_SESSION['username'])) {
     <p>
       <strong>Tickets: <?=$result['totalTickets']?></strong><br>
       <?php
-		  $query = $db->prepare('SELECT childDiscount, seniorDiscount FROM SYSTEMINFO');
-		  $childDiscount = $seniorDiscount = NULL;
-		  $query->bind_result($childDiscount, $seniorDiscount);
+		  $query = $db->prepare('SELECT childDiscount, seniorDiscount, cancellationFee FROM SYSTEMINFO');
+		  $childDiscount = $seniorDiscount = $cancellationFee = NULL;
+		  $query->bind_result($childDiscount, $seniorDiscount, $cancellationFee);
 		  $query->execute();
 		  $query->fetch();
 		  $query->close();
@@ -68,6 +68,10 @@ if(!isset($_SESSION['username'])) {
 		  $childPrice = $result['ticketPrice'] * (100 - $childDiscount) / 100;
 		  $seniorPrice = $result['ticketPrice'] * (100 - $seniorDiscount) / 100;
 		  $totalPrice = $result['ticketPrice'] * $result['adultTickets'] + $childPrice * $result['childTickets'] + $seniorPrice * $result['seniorTickets'];
+
+		  if($result['status'] === 'Cancelled') {
+			  $totalPrice = $cancellationFee;
+		  }
 
         if ($result['adultTickets']) {
           echo $result['adultTickets'] . " adult ticket" . ($result['adultTickets']==1?'':'s') . ": $" . number_format($result['ticketPrice'] * $result['adultTickets'], 2) . "<br>";
@@ -82,10 +86,7 @@ if(!isset($_SESSION['username'])) {
     </p>
 
 	<p>
-		Total: $<?php
-
-		echo number_format($totalPrice, 2);
-		 ?>
+		Total: $<?=number_format($totalPrice, 2)?>
 	</p>
 
     <?php
