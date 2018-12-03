@@ -44,6 +44,7 @@ CREATE TABLE SYSTEMINFO
 
 CREATE TABLE REVIEW (
     reviewID VARCHAR(32) PRIMARY KEY,
+    reviewTitle VARCHAR(256),
     comment VARCHAR(5000),
     title VARCHAR(256), FOREIGN KEY fk_review_title
 (title) REFERENCES MOVIE
