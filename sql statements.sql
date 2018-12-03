@@ -22,3 +22,6 @@ SELECT title FROM MOVIE NATURAL JOIN PLAYS_AT WHERE playing = 1
 
 -- Fig 4. Movie
 SELECT MOVIE.title, releaseDate, MOVIE.rating, length, genre, COUNT(REVIEW.reviewID) AS reviews, AVG(REVIEW.rating) AS avgScore FROM MOVIE LEFT JOIN REVIEW ON MOVIE.title = REVIEW.title WHERE MOVIE.title = ?
+
+-- Fig 6. Overview
+SELECT synopsis, cast FROM MOVIE WHERE MOVIE.title = ?
