@@ -17,6 +17,7 @@ if(!isset($_SESSION['username'])) {
   <body>
     <h1>Order History</h1>
 
+    <!-- TODO: Search -->
     <div>
       <span>Order ID</span>
       <input id="order_id">
