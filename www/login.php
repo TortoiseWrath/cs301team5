@@ -67,10 +67,10 @@ if(isset($_POST['username'])) {
 <form method="POST" class="login">
 <h1>Login</h1>
 <label for="username">Username</label>
-<input type="text" name="username">
+<input type="text" id="username" name="username">
 <br>
 <label for="password">Password</label>
-<input type="password" name="password">
+<input type="password" id="password" name="password">
 <br>
 <button>Login</button>
 <button formaction="register.php">Register</button>
