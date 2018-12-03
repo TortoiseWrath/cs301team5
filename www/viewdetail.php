@@ -45,7 +45,7 @@ if(!isset($_SESSION['username'])) {
             $minutes = ($time % 60);
             return sprintf($format, $hours, $minutes);
         }
-        
+
           echo convertToHoursMins($result['length'], '%2d hr  %02d min');
         ?>
       </span>
@@ -56,19 +56,37 @@ if(!isset($_SESSION['username'])) {
     <p>Status: <?=$result['status']?></p>
 
     <p>
-      Tickets: <br>
+      <strong>Tickets: <?=$result['totalTickets']?></strong><br>
       <?php
+		  $query = $db->prepare('SELECT childDiscount, seniorDiscount FROM SYSTEMINFO');
+		  $childDiscount = $seniorDiscount = NULL;
+		  $query->bind_result($childDiscount, $seniorDiscount);
+		  $query->execute();
+		  $query->fetch();
+		  $query->close();
+
+		  $childPrice = $result['ticketPrice'] * (100 - $childDiscount) / 100;
+		  $seniorPrice = $result['ticketPrice'] * (100 - $seniorDiscount) / 100;
+		  $totalPrice = $result['ticketPrice'] * $result['adultTickets'] + $childPrice * $result['childTickets'] + $seniorPrice * $result['seniorTickets'];
+
         if ($result['adultTickets']) {
-          echo "Adult Tickets: " . $result['adultTickets'] . "<br>";
+          echo $result['adultTickets'] . " adult ticket" . ($result['adultTickets']==1?'':'s') . ": $" . number_format($result['ticketPrice'] * $result['adultTickets'], 2) . "<br>";
         }
         if ($result['childTickets']) {
-          echo "Child Tickets: " . $result['childTickets'] . "<br>";
+          echo $result['childTickets'] . " child ticket" . ($result['childTickets']==1?'':'s') . ": $" . number_format($childPrice * $result['childTickets'], 2) . "<br>";
         }
         if ($result['seniorTickets']) {
-          echo "Senior Tickets: " . $result['seniorTickets'] . "<br>";
+          echo $result['seniorTickets'] . " senior ticket" . ($result['seniorTickets']==1?'':'s') . ": $" . number_format($seniorPrice * $result['seniorTickets'], 2);
         }
       ?>
     </p>
+
+	<p>
+		Total: $<?php
+
+		echo number_format($totalPrice, 2);
+		 ?>
+	</p>
 
     <?php
       // TODO: Implement cancelling order
