@@ -36,9 +36,9 @@ if(!isset($_SESSION['username'])) {
 	      <?php
 	      require_once('config.php');
 
-		  $query = $db->prepare('SELECT childDiscount, seniorDiscount FROM SYSTEMINFO');
-		  $childDiscount = $seniorDiscount = NULL;
-		  $query->bind_result($childDiscount, $seniorDiscount);
+		  $query = $db->prepare('SELECT childDiscount, seniorDiscount, cancellationFee FROM SYSTEMINFO');
+		  $childDiscount = $seniorDiscount = $cancellationFee = NULL;
+		  $query->bind_result($childDiscount, $seniorDiscount, $cancellationFee);
 		  $query->execute();
 		  $query->fetch();
 		  $query->close();
@@ -60,14 +60,18 @@ if(!isset($_SESSION['username'])) {
 			  $childPrice = $ticketPrice * (100 - $childDiscount) / 100;
 			  $seniorPrice = $ticketPrice * (100 - $seniorDiscount) / 100;
 			  $totalPrice = $ticketPrice * $adultTickets + $childPrice * $childTickets + $seniorPrice * $seniorTickets;
+
+			  if($status === 'Cancelled') {
+				  $totalPrice = $cancellationFee;
+			  }
 			  ?>
 	        <tr>
-	          <td><input type="radio" name="orderID" value=<?=$orderID?>></td>
-	          <td><?=$orderID?></td>
-	          <td><a href="movie.php?title=<?=urlencode($title)?>"><?=htmlspecialchars($title)?></a></td>
-	          <td><?=$status?></td>
-	          <td>$<?=number_format($totalPrice, 2)?></td>
-	        </tr>
+	          <td><input type="radio" name="orderID" id="order<?=$orderID?>" value="<?=$orderID?>"></td>
+	          <td><label for="order<?=$orderID?>"><?=$orderID?></label></td>
+	          <td><label for="order<?=$orderID?>"><?=htmlspecialchars($title)?></label></td>
+	          <td><label for="order<?=$orderID?>"><?=$status?></label></td>
+	          <td><label for="order<?=$orderID?>">$<?=number_format($totalPrice, 2)?></label></td>
+		  </tr></label>
 	      <?php endwhile;
 		  $query->close(); ?>
 
