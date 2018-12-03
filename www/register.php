@@ -84,12 +84,13 @@ if(isset($_POST['email'])) {
 			$insert = $db->prepare("INSERT INTO MANAGER (email, username, password) VALUES (?, ?, ?)");
 			$insert->bind_param('sss', $_POST['email'], $_POST['username'], $_POST['password']);
 			if(!$insert->execute()) {
-				$registrationFailures[] = $insert->errno . ' (' . $insert->error . ')';
+				$registrationFailures[] = $db->errno . ' (' . $db->error . ')';
 			}
 			else {
 				$_SESSION['username'] = $_POST['username'];
 				$_SESSION['manager'] = 1;
 				header('Location: managerview.php');
+				die();
 			}
 		}
 	}
@@ -104,6 +105,7 @@ if(isset($_POST['email'])) {
 			$_SESSION['username'] = $_POST['username'];
 			$_SESSION['manager'] = 0;
 			header('Location: nowplaying.php');
+			die();
 		}
 	}
 }

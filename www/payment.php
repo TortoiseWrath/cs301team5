@@ -59,6 +59,12 @@ $query->close();
 </aside>
 <hr>
 <form method="POST" action="confirmation.php">
+	<input type="hidden" name="title" value="<?=htmlspecialchars($_GET['title'])?>">
+	<input type="hidden" name="theaterID" value="<?=htmlspecialchars($_GET['theaterID'])?>">
+	<input type="hidden" name="time" value="<?=htmlspecialchars($_GET['time'])?>">
+	<input type="hidden" name="adult" value="<?=$_GET['adult']?>">
+	<input type="hidden" name="child" value="<?=$_GET['child']?>">
+	<input type="hidden" name="senior" value="<?=$_GET['senior']?>">
 	<h2>Payment Information</h2>
 	<div class="saved">
 		Use a saved card

@@ -8,7 +8,7 @@ if(!isset($_SESSION['username'])) {
 ?>
 
 <?php
-  $orderID = $_GET['orderID']
+  $orderID = $_GET['orderID'];
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@ if(!isset($_SESSION['username'])) {
     <?php
       require_once('config.php');
 
-      $query = $db->prepare('SELECT * FROM ORDERS JOIN THEATER JOIN MOVIE WHERE orderID=?');
+      $query = $db->prepare('SELECT * FROM ORDERS NATURAL JOIN THEATER NATURAL JOIN MOVIE WHERE orderID=?');
       $query->bind_param('s', $orderID);
       $query->execute();
       $result = $query->get_result()->fetch_assoc();

@@ -45,11 +45,12 @@ if(!isset($_SESSION['username'])) {
 
 		  $query = 'SELECT orderID, title, status, adultTickets, childTickets, seniorTickets, ticketPrice FROM ORDERS where username=?';
 		  if(isset($_GET['q'])) {
-			  $query .= ' AND orderID=?';
+			  $query .= ' AND orderID=? ORDER BY cast(orderID as unsigned)';
 		      $query = $db->prepare($query);
 		      $query->bind_param('ss', $_SESSION['username'], $_GET['q']);
 	  	  }
 		  else {
+			  $query .= ' ORDER BY cast(orderID as unsigned)';
 			  $query = $db->prepare($query);
 			  $query->bind_param('s', $_SESSION['username']);
 		  }
