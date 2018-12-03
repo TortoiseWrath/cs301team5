@@ -44,6 +44,8 @@ SELECT COUNT(*) FROM REVIEWS
 INSERT INTO REVIEW VALUES (?,?,?,?,?)
 
 -- Fig 9. Choose Theater
+-- Get saved theaters that are showing the movie.
+SELECT theaterID, name FROM THEATER NATURAL JOIN PREFERS NATURAL JOIN PLAYS_AT WHERE username = ? AND playing = 1 AND title = ?
 
 -- Fig 10. Search Theater Results
 
@@ -56,6 +58,10 @@ INSERT INTO REVIEW VALUES (?,?,?,?,?)
 -- Fig 14. Confirmation
 
 -- Fig 15. Order History
+SELECT orderID, title, status, totalTickets FROM ORDERS WHERE username=?
+-- Or with an order ID to search:
+SELECT orderID, title, status, totalTickets FROM ORDERS WHERE username=? AND orderID=?
+
 
 -- Fig 16. Order Detail/Cancel Order
 
