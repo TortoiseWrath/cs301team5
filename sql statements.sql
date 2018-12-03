@@ -79,6 +79,13 @@ SELECT name, state, city, street, zip FROM THEATER WHERE theaterID = ?
 SELECT cardNumber FROM PAYMENT_INFO WHERE username = ? AND expirationDate >= CURDATE() AND saved = 1
 
 -- Fig 14. Confirmation
+INSERT INTO ORDERS VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+-- To get an available order id:
+SELECT orderID FROM ORDERS ORDER BY orderID DESC LIMIT 1
+-- To get the movie info:
+SELECT rating, length, genre FROM MOVIE WHERE title = ?
+-- To get the theater info:
+SELECT name, state, city, street, zip FROM THEATER WHERE theaterID = ?
 
 -- Fig 15. Order History
 SELECT orderID, title, status, adultTickets, childTickets, seniorTickets, ticketPrice FROM ORDERS WHERE username=?
