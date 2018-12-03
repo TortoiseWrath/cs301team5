@@ -199,7 +199,6 @@ VALUES
   ("55", "2018-11-28", "06:15:15", "Completed", 2, 0, 0, 2, "clear", "6942011843723899", "2", "Up", 15),
   ("56", "2018-10-28", "06:15:15", "Completed", 2, 0, 1, 1, "user1", "2390490234042304", "2", "The Wolf of Wall Street", 15);
 
-
 INSERT INTO REVIEW
 VALUES
 ("1", "good movie", "movie was great lol", "Finding Nemo", 5, "jimmy"),
@@ -225,4 +224,4 @@ VALUES
 
 INSERT INTO SYSTEMINFO
 VALUES
-  ("5", "30", "20", "football");
+  (5, 30, 20, "football");
