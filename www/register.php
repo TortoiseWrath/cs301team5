@@ -98,7 +98,7 @@ if(isset($_POST['email'])) {
 		$insert = $db->prepare("INSERT INTO CUSTOMER (email, username, password) VALUES (?, ?, ?)");
 		$insert->bind_param('sss', $_POST['email'], $_POST['username'], $_POST['password']);
 		if(!$insert->execute()) {
-			$registrationFailures[] = $insert->errno . ' (' . $insert->error . ')';
+			$registrationFailures[] = $db->errno . ' (' . $db->error . ')';
 		}
 		else {
 			$_SESSION['username'] = $_POST['username'];

@@ -121,6 +121,7 @@ DELETE
 SET NULL
 ON
 UPDATE CASCADE,
+ticketPrice FLOAT(5, 2),
     CONSTRAINT total_tickets CHECK
 (totalTickets = adultTickets + childTickets +
 seniorTickets)
@@ -159,6 +160,7 @@ REFERENCES MOVIE
 ON
 DELETE CASCADE ON
 UPDATE CASCADE,
+ticketPrice FLOAT(5, 2),
     CONSTRAINT showtimeID PRIMARY KEY
 (showtime, theaterID, title)
 );

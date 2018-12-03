@@ -48,19 +48,36 @@ INSERT INTO REVIEW VALUES (?,?,?,?,?)
 SELECT theaterID, name FROM THEATER NATURAL JOIN PREFERS NATURAL JOIN PLAYS_AT WHERE username = ? AND playing = 1 AND title = ?
 
 -- Fig 10. Search Theater Results
+SELECT theaterID, name, state, city, street, zip FROM THEATER NATURAL JOIN PLAYS_AT WHERE (lower(state) LIKE ? OR lower(city) LIKE ? OR lower(name) LIKE ?) AND playing = 1 AND title = ?
 
 -- Fig 11. Select Time
+-- To get the movie info:
+SELECT rating, length, genre FROM MOVIE WHERE title = ?
+-- To get the showtimes:
+SELECT showtime FROM SHOWTIME where theaterID = ? AND title = ? AND showtime BETWEEN NOW() AND (NOW() + INTERVAL 7 DAY)
+-- To save a theater to the preferred theaters (which happens when submitting to this page from the search results):
+INSERT INTO PREFERS VALUES (?, ?)
 
 -- Fig 12. Ticket
+-- To get the movie info:
+SELECT rating, length, genre FROM MOVIE WHERE title = ?
+-- To get the theater info:
+SELECT name, state, city, street, zip FROM THEATER WHERE theaterID = ?
+-- To get the discount percentages:
+SELECT childDiscount, seniorDiscount FROM SYSTEMINFO
+-- To get the base ticket cost:
+SELECT ticketPrice FROM SHOWTIME WHERE showtime = ? AND theaterID = ? AND title = ?
 
 -- Fig 13. Payment Information
 
 -- Fig 14. Confirmation
 
 -- Fig 15. Order History
-SELECT orderID, title, status, totalTickets FROM ORDERS WHERE username=?
+SELECT orderID, title, status, adultTickets, childTickets, seniorTickets, ticketPrice FROM ORDERS WHERE username=?
 -- Or with an order ID to search:
-SELECT orderID, title, status, totalTickets FROM ORDERS WHERE username=? AND orderID=?
+SELECT orderID, title, status, adultTickets, childTickets, seniorTickets, ticketPrice FROM ORDERS WHERE username=? AND orderID=?
+-- To get the discount percentages:
+SELECT childDiscount, seniorDiscount FROM SYSTEMINFO
 
 
 -- Fig 16. Order Detail/Cancel Order

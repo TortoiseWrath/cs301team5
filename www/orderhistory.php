@@ -36,7 +36,14 @@ if(!isset($_SESSION['username'])) {
 	      <?php
 	      require_once('config.php');
 
-		  $query = 'SELECT orderID, title, status, totalTickets FROM ORDERS where username=?';
+		  $query = $db->prepare('SELECT childDiscount, seniorDiscount FROM SYSTEMINFO');
+		  $childDiscount = $seniorDiscount = NULL;
+		  $query->bind_result($childDiscount, $seniorDiscount);
+		  $query->execute();
+		  $query->fetch();
+		  $query->close();
+
+		  $query = 'SELECT orderID, title, status, adultTickets, childTickets, seniorTickets, ticketPrice FROM ORDERS where username=?';
 		  if(isset($_GET['q'])) {
 			  $query .= ' AND orderID=?';
 		      $query = $db->prepare($query);
@@ -47,15 +54,19 @@ if(!isset($_SESSION['username'])) {
 			  $query->bind_param('s', $_SESSION['username']);
 		  }
 	      $query->execute();
-	      $orderID = $title = $status = $totalTickets = NULL;
-	      $query->bind_result($orderID, $title, $status, $totalTickets);
-	      while($query->fetch()):?>
+	      $orderID = $title = $status = $adultTickets = $childTickets = $seniorTickets = $ticketPrice = NULL;
+	      $query->bind_result($orderID, $title, $status, $adultTickets, $childTickets, $seniorTickets, $ticketPrice);
+	      while($query->fetch()):
+			  $childPrice = $ticketPrice * (100 - $childDiscount) / 100;
+			  $seniorPrice = $ticketPrice * (100 - $seniorDiscount) / 100;
+			  $totalPrice = $ticketPrice * $adultTickets + $childPrice * $childTickets + $seniorPrice * $seniorTickets;
+			  ?>
 	        <tr>
 	          <td><input type="radio" name="orderID" value=<?=$orderID?>></td>
 	          <td><?=$orderID?></td>
-	          <td><?=$title?></td>
+	          <td><a href="movie.php?title=<?=urlencode($title)?>"><?=htmlspecialchars($title)?></a></td>
 	          <td><?=$status?></td>
-	          <td><?=$totalTickets?></td>
+	          <td>$<?=number_format($totalPrice, 2)?></td>
 	        </tr>
 	      <?php endwhile;
 		  $query->close(); ?>
