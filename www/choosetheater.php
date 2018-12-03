@@ -25,7 +25,7 @@ $title = $_GET['title'];
 		echo 'You have no saved theaters where ' . $_GET['title'] . ' is playing.';
 	}
 	else {
-		echo '<label for="theaterID">Saved Theater</label> <select name="theaterID">';
+		echo '<label for="theaterID">Saved Theater</label> <select id="theaterID" name="theaterID">';
 		$theaterID = $theaterName = NULL;
 		$query->bind_result($theaterID, $theaterName);
 		while($query->fetch()): ?>
@@ -37,6 +37,6 @@ $title = $_GET['title'];
 	?>
 	<p>
 	<label for="q">City/State/Theater</label>
-	<input type="text" name="q">
+	<input type="text" name="q" id="q">
 	<button formaction="results.php">Search</button>
 </form>

@@ -86,7 +86,10 @@ $query->close();
 </aside>
 <hr>
 <form method="GET" action="payment.php">
-	<h2>How many ticket?</h1>
+	<input type="hidden" name="title" value="<?=htmlspecialchars($_GET['title'])?>">
+	<input type="hidden" name="theaterID" value="<?=htmlspecialchars($_GET['theaterID'])?>">
+	<input type="hidden" name="time" value="<?=htmlspecialchars($_GET['time'])?>">
+	<h2>How many ticket?</h2>
 	<table>
 		<tr class="adult">
 			<th>Adult</th>
