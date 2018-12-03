@@ -41,7 +41,7 @@ SELECT rating, comment, AVG(REVIEW.rating) FROM MOVIE LEFT JOIN REVIEW ON MOVIE.
 -- Ensure the user has seen the movie before
 SELECT COUNT(*) FROM ORDERS WHERE username = ? AND title = ?
 --the following statement should be used to insert the reviewID
-SELECT reviewID FROM REVIEWS ORDER BY reviewID DESC LIMIT 1
+SELECT reviewID FROM REVIEWS ORDER BY cast(reviewID as unsigned) DESC LIMIT 1
 --reviewID = the above + 1
 INSERT INTO REVIEW VALUES (?,?,?,?,?)
 
@@ -79,23 +79,28 @@ SELECT name, state, city, street, zip FROM THEATER WHERE theaterID = ?
 SELECT cardNumber FROM PAYMENT_INFO WHERE username = ? AND expirationDate >= CURDATE() AND saved = 1
 
 -- Fig 14. Confirmation
-INSERT INTO ORDERS VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 -- To get an available order id:
-SELECT orderID FROM ORDERS ORDER BY orderID DESC LIMIT 1
+SELECT orderID FROM ORDERS ORDER BY cast(orderID as unsigned) DESC LIMIT 1
+-- To add a card to the database:
+INSERT INTO PAYMENT_INFO VALUES(?, ?, ?, ?, ?, ?)
+-- To add the order to the database:
+INSERT INTO ORDERS VALUES (?, CURDATE(), CURTIME(), "Completed", ?, ?, ?, ?, ?, ?, ?, ?, ?)
 -- To get the movie info:
 SELECT rating, length, genre FROM MOVIE WHERE title = ?
 -- To get the theater info:
 SELECT name, state, city, street, zip FROM THEATER WHERE theaterID = ?
+-- To get the base ticket cost:
+SELECT ticketPrice FROM SHOWTIME WHERE showtime = ? AND theaterID = ? AND title = ?
 
 -- Fig 15. Order History
-SELECT orderID, title, status, adultTickets, childTickets, seniorTickets, ticketPrice FROM ORDERS WHERE username=?
+SELECT orderID, title, status, adultTickets, childTickets, seniorTickets, ticketPrice FROM ORDERS WHERE username=? ORDER BY cast(orderID as unsigned)
 -- Or with an order ID to search:
-SELECT orderID, title, status, adultTickets, childTickets, seniorTickets, ticketPrice FROM ORDERS WHERE username=? AND orderID=?
+SELECT orderID, title, status, adultTickets, childTickets, seniorTickets, ticketPrice FROM ORDERS WHERE username=? AND orderID=? ORDER BY cast(orderID as unsigned)
 -- To get the discount percentages and cancellation fee:
 SELECT childDiscount, seniorDiscount, cancellationFee FROM SYSTEMINFO
 
 -- Fig 16. Order Detail/Cancel Order
-SELECT * FROM ORDERS JOIN THEATER JOIN MOVIE WHERE orderID=?
+SELECT * FROM ORDERS NATURAL JOIN THEATER NATURAL JOIN MOVIE WHERE orderID=?
 -- To get the discount percentages and cancellation fee:
 SELECT childDiscount, seniorDiscount, cancellationFee FROM SYSTEMINFO
 
