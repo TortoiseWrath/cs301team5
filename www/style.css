@@ -81,6 +81,8 @@ nav.me > a:active img {
   filter: url(#mef); /* Change color */
 }
 
+/* Order History */
+
 .order-history__table {
   margin: 50px auto;
 }
