@@ -8,9 +8,14 @@ SELECT COUNT(*) FROM CUSTOMER WHERE username = ? AND password = ?
 -- Check if manager password is correct
 SELECT COUNT(*) FROM SYSTEMINFO WHERE managerPassword = ?
 -- Create a regular user
-INSERT INTO CUSTOMER VALUES (?, ?, ?)
+INSERT INTO CUSTOMER (email, username, password) VALUES (?, ?, ?)
 -- Or create a manager
-INSERT INTO MANAGER VALUES (?, ?, ?)
+INSERT INTO MANAGER (email, username, password) VALUES (?, ?, ?)
+-- Make sure there is no existing user with same email or username
+-- Database constraints are insufficient for this since they do not prevent a user
+-- from being inserted into the manager or customer table with same email
+-- or username as a user in the other table
+SELECT username, email FROM (SELECT * FROM CUSTOMER UNION SELECT * FROM MANAGER) AS USERS WHERE username = ? OR email = ?
 
 -- Fig 3. Now Playing
 SELECT title FROM MOVIE NATURAL JOIN PLAYS_AT WHERE playing = 1
