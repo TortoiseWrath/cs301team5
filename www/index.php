@@ -26,7 +26,7 @@
 	<li><a href="payment.php">Payment Information</a></li>
 	<li><a href="confirmation.php">Confirmation</a></li>
 	<li><a href="orderhistory.php">Order History</a></li>
-	<li><a href="orderdetail.php">Order Detail</a></li>
+	<li><a href="viewdetail.php">Order Detail</a></li>
 	<li><a href="mypayment.php">My Payment Information</a></li>
 	<li><a href="preferred.php">My Preferred Theater</a></li>
 	<li><a href="managerview.php">Choose Functionality (manager view)</a></li>
