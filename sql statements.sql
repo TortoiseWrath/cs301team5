@@ -20,8 +20,52 @@ SELECT username, email FROM (SELECT * FROM CUSTOMER UNION SELECT * FROM MANAGER)
 -- Fig 3. Now Playing
 SELECT title FROM MOVIE NATURAL JOIN PLAYS_AT WHERE playing = 1
 
--- Fig 4. Movie
+-- Fig 4. Me
+--Order History
+SELECT * FROM ORDERS WHERE username = ?
+--Payment Info
+SELECT * FROM PAYMENT_INFO WHERE username = ? AND saved = 1
+--Preferred Theater
+SELECT  THEATER.theaterID FROM THEATER NATURAL JOIN PREFERS WHERE username = ?
+
+-- Fig 5. Movie
 SELECT MOVIE.title, releaseDate, MOVIE.rating, length, genre, COUNT(REVIEW.reviewID) AS reviews, AVG(REVIEW.rating) AS avgScore FROM MOVIE LEFT JOIN REVIEW ON MOVIE.title = REVIEW.title WHERE MOVIE.title = ?
 
 -- Fig 6. Overview
 SELECT synopsis, cast FROM MOVIE WHERE MOVIE.title = ?
+
+-- Fig 7. Review
+SELECT rating, comment, AVG(REVIEW.rating) FROM MOVIE LEFT JOIN REVIEW ON MOVIE.title = REVIEW.title WHERE MOVIE.title = ?
+
+-- Fig 8. Give Review
+--the following statement should be used to insert the reviewID
+SELECT COUNT(*) FROM REVIEWS
+--reviewID = the above + 1
+INSERT INTO REVIEW VALUES (?,?,?,?,?)
+
+-- Fig 9. Choose Theater
+
+-- Fig 10. Search Theater Results
+
+-- Fig 11. Select Time
+
+-- Fig 12. Ticket
+
+-- Fig 13. Payment Information
+
+-- Fig 14. Confirmation
+
+-- Fig 15. Order History
+
+-- Fig 16. Order Detail/Cancel Order
+
+-- Fig 17. My Payment Information
+SELECT cardnumber, nameOnCard, expirationDate FROM PAYMENT_INFO WHERE username = ?
+
+-- Fig 18. My Preferred Theater
+
+-- Fig 19. Choose Functionality
+
+-- Fig 20. View Revenue Report
+
+-- Fig 21. View Popular Movie Report
