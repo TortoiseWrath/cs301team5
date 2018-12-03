@@ -183,31 +183,26 @@ VALUES
 
 INSERT INTO REVIEW
 VALUES
-("1",
-"movie was great lol",
-"Finding Nemo",
-5,
-"jimmy"
-),
-("2", "too scary not for kids", "The Grinch" , 2, "mary"),
-("3", "too many superheroes" , "Avengers" , "3", "bob"),
-("4", "queen is pretty good" , "Bohemian Rhapsody" , "4", "clear"),
-("5", "yeah great effects" , "Star Wars" , 5, "clear"),
-("6", "morgan freeman is a god" , "The Shawshank Redemption" , 5, "clear"),
-("7", "violence is bad" , "Pulp Fiction" , 1, "clear"),
-("8", "what is going on" , "Inception" , 1, "clear"),
-("9", "outer space looked really good" , "Interstellar" , 4, "clear"),
-("10", "i don't like black and white movies" , "Casablanca" , 2, "clear"),
-("11", "too many lions needed other animals" , "The Lion King" , 2, "clear"),
-("12", "lions are good" , "The Lion King" , 5, "clear"),
-("13", "buzz lightyear is a god" , "Toy Story" , 5, "clear"),
-("14", "too many balloons" , "Up" , 1, "clear"),
-("15", "movie made me like economics" , "The Wolf of Wall Street" , 1, "clear"),
-("16", "movie did a great job of symbolizing why fish are awesome" , "Finding Nemo" , 4, "clear"),
-("17", "queen is awful" , "Bohemian Rhapsody" , 1, "clear"),
-("18", "too complicated" , "Up" , 1, "clear"),
-("19", "too simple" , "Inception" , 1, "clear"),
-("20", "christmas is insane" , "The Grinch" , 5, "clear");
+("1", "good movie", "movie was great lol", "Finding Nemo", 5, "jimmy"),
+("2", "scary", "too scary not for kids", "The Grinch" , 2, "mary"),
+("3", "super", "too many superheroes" , "Avengers" , "3", "bob"),
+("4", "queen", "queen is pretty good" , "Bohemian Rhapsody" , "4", "clear"),
+("5", "great effects", "yeah great effects" , "Star Wars" , 5, "clear"),
+("6", "freeman", "morgan freeman is a god" , "The Shawshank Redemption" , 5, "clear"),
+("7", "violence", "violence is bad" , "Pulp Fiction" , 1, "clear"),
+("8", "going on", "what is going on" , "Inception" , 1, "clear"),
+("9", "outer space", "outer space looked really good" , "Interstellar" , 4, "clear"),
+("10", "yeah", "i don't like black and white movies" , "Casablanca" , 2, "clear"),
+("11", "lions", "too many lions needed other animals" , "The Lion King" , 2, "clear"),
+("12", "good lions", "lions are good" , "The Lion King" , 5, "clear"),
+("13", "buzzy", "buzz lightyear is a god" , "Toy Story" , 5, "clear"),
+("14", "lots of baloons", "too many balloons" , "Up" , 1, "clear"),
+("15", "economics", "movie made me like economics" , "The Wolf of Wall Street" , 1, "clear"),
+("16", "symbols", "movie did a great job of symbolizing why fish are awesome" , "Finding Nemo" , 4, "clear"),
+("17", "queen", "queen is awful" , "Bohemian Rhapsody" , 1, "clear"),
+("18", "complicated", "too complicated" , "Up" , 1, "clear"),
+("19", "very simple", "too simple" , "Inception" , 1, "clear"),
+("20", "super christmas", "christmas is insane" , "The Grinch" , 5, "clear");
 
 INSERT INTO SYSTEMINFO
 VALUES
