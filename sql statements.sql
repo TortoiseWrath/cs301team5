@@ -38,8 +38,10 @@ SELECT synopsis, cast FROM MOVIE WHERE MOVIE.title = ?
 SELECT rating, comment, AVG(REVIEW.rating) FROM MOVIE LEFT JOIN REVIEW ON MOVIE.title = REVIEW.title WHERE MOVIE.title = ?
 
 -- Fig 8. Give Review
+-- Ensure the user has seen the movie before
+SELECT COUNT(*) FROM ORDERS WHERE username = ? AND title = ?
 --the following statement should be used to insert the reviewID
-SELECT COUNT(*) FROM REVIEWS
+SELECT reviewID FROM REVIEWS ORDER BY reviewID DESC LIMIT 1
 --reviewID = the above + 1
 INSERT INTO REVIEW VALUES (?,?,?,?,?)
 
@@ -76,11 +78,13 @@ SELECT ticketPrice FROM SHOWTIME WHERE showtime = ? AND theaterID = ? AND title 
 SELECT orderID, title, status, adultTickets, childTickets, seniorTickets, ticketPrice FROM ORDERS WHERE username=?
 -- Or with an order ID to search:
 SELECT orderID, title, status, adultTickets, childTickets, seniorTickets, ticketPrice FROM ORDERS WHERE username=? AND orderID=?
--- To get the discount percentages:
-SELECT childDiscount, seniorDiscount FROM SYSTEMINFO
-
+-- To get the discount percentages and cancellation fee:
+SELECT childDiscount, seniorDiscount, cancellationFee FROM SYSTEMINFO
 
 -- Fig 16. Order Detail/Cancel Order
+SELECT * FROM ORDERS JOIN THEATER JOIN MOVIE WHERE orderID=?
+-- To get the discount percentages and cancellation fee:
+SELECT childDiscount, seniorDiscount, cancellationFee FROM SYSTEMINFO
 
 -- Fig 17. My Payment Information
 SELECT cardnumber, nameOnCard, expirationDate FROM PAYMENT_INFO WHERE username = ?

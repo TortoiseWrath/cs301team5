@@ -11,14 +11,6 @@ if(!isset($_GET['time'])) die('No showtime specified!');
 
 require_once('config.php');
 
-if($_GET['save'] == 'on') {
-	// Save the theater to the user's preferred theaters.
-	$insertion = $db->prepare('INSERT INTO PREFERS VALUES (?, ?)');
-	$insertion->bind_param('ss', $_GET['theaterID'], $_SESSION['username']);
-	$insertion->execute();
-	$insertion->close();
-}
-
 $query = $db->prepare('SELECT rating, length, genre FROM MOVIE WHERE title = ?');
 $query->bind_param('s', $_GET['title']);
 $rating = $length = $genre = NULL;
