@@ -75,3 +75,4 @@ if(isset($_POST['username'])) {
 <button>Login</button>
 <button formaction="register.php">Register</button>
 </form>
+<img src="bee.png">
