@@ -14,7 +14,7 @@ if(!isset($_SESSION['username'])) {
 <ul>
 	<li><a href="orderhistory.php">My Order History</a></li>
 	<li><a href="mypayment.php">My Payment Information</a></li>
-	<li><a href="mypreferred.php">My Preferred Theater</a></li>
+	<li><a href="preferred.php">My Preferred Theater</a></li>
 </ul>
 
 <form>
