@@ -18,7 +18,7 @@ INSERT INTO MANAGER (email, username, password) VALUES (?, ?, ?)
 SELECT username, email FROM (SELECT * FROM CUSTOMER UNION SELECT * FROM MANAGER) AS USERS WHERE username = ? OR email = ?
 
 -- Fig 3. Now Playing
-SELECT title FROM MOVIE NATURAL JOIN PLAYS_AT WHERE playing = 1
+SELECT DISTINCT title FROM MOVIE NATURAL JOIN PLAYS_AT WHERE playing = 1
 
 -- Fig 4. Me
 --Order History
@@ -26,7 +26,7 @@ SELECT * FROM ORDERS WHERE username = ?
 --Payment Info
 SELECT * FROM PAYMENT_INFO WHERE username = ? AND saved = 1
 --Preferred Theater
-SELECT  THEATER.theaterID FROM THEATER NATURAL JOIN PREFERS WHERE username = ?
+SELECT THEATER.theaterID FROM THEATER NATURAL JOIN PREFERS WHERE username = ?
 
 -- Fig 5. Movie
 SELECT MOVIE.title, releaseDate, MOVIE.rating, length, genre, COUNT(REVIEW.reviewID) AS reviews, AVG(REVIEW.rating) AS avgScore FROM MOVIE LEFT JOIN REVIEW ON MOVIE.title = REVIEW.title WHERE MOVIE.title = ?

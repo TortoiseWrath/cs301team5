@@ -43,21 +43,20 @@ if(isset($_POST['email'])) {
 		$exists_check->store_result();
 		$exists = $exists_check->num_rows;
 		if($exists) {
-			var_dump($exists_check);
 			$resultUser = $resultEmail = NULL;
 			$exists_check->bind_result($resultUser, $resultEmail);
 			while($exists_check->fetch()) {
-				var_dump($resultEmail, $resultUser);
 				if($resultEmail == $_POST['email']) {
 					if($resultUser == $_POST['username']) {
 						$registrationFailures[] = 'A user already exists with this username and email address. Did you mean to <a href="login.php">log in</a>?';
+						$registrationFailures['username'] = '';
+						$registrationFailures['email'] = '';
 					}
 					else {
 						$registrationFailures['email'] = 'A user already exists with this email address. Did you mean to <a href="login.php">log in</a>?';
 					}
 				}
 				else {
-					echo '<strong>'.$resultEmail.' is not '.$_POST['email'].'</strong>';
 					$registrationFailures['username'] = 'A user already exists with this username. Did you mean to <a href="login.php">log in</a>?';
 				}
 			}
@@ -117,7 +116,7 @@ if(isset($_POST['email'])) {
 <h1>New User Registration</h1>
 <form method="POST">
 	<ul class="errors">
-		<?php foreach($registrationFailures as $error) echo '<li>'.$error.'</li>'; ?>
+		<?php foreach($registrationFailures as $error) if(!empty($error)) echo '<li>'.$error.'</li>'; ?>
 	</ul>
 	<label for="username">Username</label>
 	<input type="text" name="username"<?=(isset($registrationFailures['username'])?' class="error"':'').(isset($_POST['username'])?' value="'.$_POST['username'].'"':'')?>>

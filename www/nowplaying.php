@@ -30,7 +30,7 @@ if(!isset($_SESSION['username'])) {
 <ul class="nowplaying">
 	<?php
 	require_once('config.php');
-	$query = $db->prepare('SELECT title FROM MOVIE NATURAL JOIN PLAYS_AT WHERE playing=1');
+	$query = $db->prepare('SELECT DISTINCT title FROM MOVIE NATURAL JOIN PLAYS_AT WHERE playing=1');
 	$query->execute();
 	$title = NULL;
 	$query->bind_result($title);
