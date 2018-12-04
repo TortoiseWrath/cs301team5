@@ -9,6 +9,12 @@ html {
   font-size: 14pt;
 }
 
+body {
+	width: 8in;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 h1 {
   color: #bf9000;
   font-size: 24pt;
@@ -33,6 +39,65 @@ a:hover {
 a:active {
   text-decoration: underline;
   outline: 0;
+}
+
+input, button {
+	background-color: #fff;
+	color: #000;
+	padding: 0.3em;
+	border: 2pt solid black;
+}
+
+input:hover, button:hover, button:active {
+	background-color: #eee;
+}
+
+button {
+	display: inline-block;
+	box-shadow: 0.2em 0.2em 0 0 black;
+	margin: 0.2em;
+	vertical-align: top;
+}
+
+button:active {
+	box-shadow: none;
+	margin: 0.4em 0 0 0.4em;
+}
+
+button.space {
+	margin-right: 5.2em;
+}
+
+button.space:active {
+	margin-right: 5em;
+}
+
+div.buttons {
+	border: 1px solid black;
+}
+
+/* Login */
+form.login+img {
+	float: right;
+	width: auto;
+	height: 2in;
+}
+
+p.loginError {
+	color: #f00;
+}
+
+form.login>label {
+	display: inline-block;
+	text-align: left;
+	width: 6em;
+}
+
+form.login>input {
+	display: inline-block;
+	text-align: left;
+	margin-bottom: 0.5em;
+	width: 12em;
 }
 
 /* Now Playing */

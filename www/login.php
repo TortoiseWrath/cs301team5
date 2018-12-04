@@ -61,18 +61,18 @@ if(isset($_POST['username'])) {
 <!DOCTYPE html>
 <title>Log In</title>
 <link rel="stylesheet" href="style.css">
+<h1>Login</h1>
 <?php if($loginFailed): ?>
-	<p class="loginError">Your username or password was invalid. Please try again.
+	<p class="loginError">Your username or password was invalid. Please try again.</p>
 <?php endif; ?>
 <form method="POST" class="login">
-<h1>Login</h1>
 <label for="username">Username</label>
-<input type="text" id="username" name="username">
+<input type="text" id="username" name="username"<?=isset($_POST['username'])?' value="'.$_POST['username'].'"':''?>>
 <br>
 <label for="password">Password</label>
 <input type="password" id="password" name="password">
 <br>
-<button>Login</button>
+<button class="space">Login</button>
 <button formaction="register.php">Register</button>
 </form>
 <img src="bee.png">
