@@ -18,6 +18,6 @@ if(!isset($_SESSION['username'])) {
 </ul>
 
 <form>
-	<button formaction="nowplaying.php">Back</button>
+	<button formaction="nowplaying.php" class="space">Back</button>
 	<button formaction="logout.php">Logout</button>
 </form>
