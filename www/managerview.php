@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['manager'])) {
+if(!@$_SESSION['manager']) {
 	// User is not a manager
 	header('Location: login.php');
 	die();
