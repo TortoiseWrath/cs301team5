@@ -251,20 +251,49 @@ body>h2+aside>p.reviews a {
 	color: #fff;
 }
 
-body>aside+form {
+body>h2+aside+form {
 	float: right;
 	width: calc((3in - 10em) / 2 + 12em);
 }
 
-body>aside+form button {
+body>h2+aside+form button {
 	display: block;
 	width: 10em;
 	margin-top: 1em;
 }
 
-body>aside+form button:active {
+body>h2+aside+form button:active {
 	margin-top: 1.2em;
 	margin-bottom: -0.2em;
+}
+
+/* Overview */
+
+body>h2+article {
+	width: 100%;
+	text-align: left;
+	margin-left: 1em;
+}
+
+body>h2+article>h3 {
+	font-family: serif;
+	font-weight: normal;
+	font-size: 100%;
+	font-style: italic;
+}
+
+body>h2+article>*.cast {
+	font-size: 120%;
+	margin: 1rem 0 1rem;
+}
+
+body>h2+article+form {
+	width: 100%;
+	text-align: left;
+	margin-left: 1em;
+}
+body>h2+article+form>button {
+	width: 10em;
 }
 
 /* Order History */
