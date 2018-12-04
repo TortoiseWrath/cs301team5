@@ -7,6 +7,7 @@ form.login {
 html {
   text-align: center;
   font-size: 14pt;
+  font-family: sans-serif;
 }
 
 body {
@@ -57,6 +58,8 @@ button {
 	box-shadow: 0.2em 0.2em 0 0 black;
 	margin: 0.2em;
 	vertical-align: top;
+	font: inherit;
+	font-size: smaller;
 }
 
 button:active {
@@ -76,7 +79,7 @@ div.buttons {
 	border: 1px solid black;
 }
 
-/* Login */
+/* Login and Register */
 form.login+img {
 	float: right;
 	width: auto;
@@ -87,17 +90,49 @@ p.loginError {
 	color: #f00;
 }
 
-form.login>label {
+form[method="POST"]>label {
 	display: inline-block;
 	text-align: left;
 	width: 6em;
 }
 
-form.login>input {
+form[method="POST"]>input {
 	display: inline-block;
 	text-align: left;
 	margin-bottom: 0.5em;
 	width: 12em;
+}
+
+/* Register */
+form:not(.login)>label {
+	width: 10em;
+}
+
+input.error {
+	border-color: #f00;
+	background-color: #fff3f3;
+}
+
+input.error:hover, input.error:active {
+	background-color: #ffe8e8;
+}
+
+ul.errors {
+	list-style-type: none;
+	padding: 0;
+	margin: 1em 0 1.4em 0;
+}
+
+ul.errors > li {
+	display: block;
+	width: 100%;
+	border: 2pt solid red;
+	color: red;
+	background-color: #fff3f3;
+	font-size: smaller;
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+	box-sizing: border-box;
 }
 
 /* Now Playing */
