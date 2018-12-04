@@ -6,11 +6,14 @@ if(!isset($_SESSION['username'])) {
 	die();
 }
 if(!isset($_GET['title'])) die('No movie specified!');
-if(!isset($_GET['theaterID'])) die('No theater specified!');
+if(!isset($_GET['theaterID'])) {
+	$url = 'choosetheater.php?error=theater&'.http_build_query($_GET);
+	header("Location: $url");
+}
 
 require_once('config.php');
 
-if($_GET['save'] == 'on') {
+if(isset($_GET['save']) && $_GET['save'] == 'on') {
 	// Save the theater to the user's preferred theaters.
 	$insertion = $db->prepare('INSERT INTO PREFERS VALUES (?, ?)');
 	$insertion->bind_param('ss', $_GET['theaterID'], $_SESSION['username']);
@@ -41,6 +44,9 @@ $query->close();
 <title>Choose a showtime for <?=$_GET['title']?></title>
 <link rel="stylesheet" href="style.css">
 <h1>Select Time</h1>
+<?php if(@$_GET['error'] == 'time'): ?>
+	<p class="formError">You must select a showtime.</p>
+<?php endif; ?>
 <aside>
 	<strong><?=$_GET['title']?></strong>
 	<p class="rating"><?=$rating?>

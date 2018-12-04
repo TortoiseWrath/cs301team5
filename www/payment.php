@@ -9,6 +9,12 @@ if(!isset($_GET['title'])) die('No movie specified!');
 if(!isset($_GET['theaterID'])) die('No theater specified!');
 if(!isset($_GET['time'])) die('No showtime specified!');
 
+if(@$_GET['adult'] + @$_GET['child'] + @$_GET['senior'] == 0) {
+	$url = 'ticket.php?error=zero&'.http_build_query($_GET);
+	header("Location: $url");
+	die();
+}
+
 require_once('config.php');
 
 $query = $db->prepare('SELECT rating, length, genre FROM MOVIE WHERE title = ?');
@@ -42,20 +48,19 @@ $query->close();
 <title>Buying <?=$totalTickets=$_GET['adult']+$_GET['child']+$_GET['senior']?> ticket<?=$totalTickets==1?'':'s'?> for <?=$_GET['title']?> at <?=$name?></title>
 <link rel="stylesheet" href="style.css">
 <h1>Buy Ticket</h1>
+<aside class="theater">
+	<strong><?=$name?></strong>
+	<address><?="$street<br>$city, $state $zip"?></address>
+</aside>
 <aside class="movie">
 	<strong><?=$_GET['title']?></strong>
 	<p class="rating"><?=$rating?>
 	<p class="length"><?=($length>60?(floor($length/60).' hr '):'').($length%60).' min'?>
-	<p class="genre"><?=$genre?>
 </aside>
 <aside class="showtime">
 	<?=date('l, F j',strtotime($_GET['time']))?>
 	<br>
 	<?=date('g:i A',strtotime($_GET['time']))?>
-</aside>
-<aside class="theater">
-	<strong><?=$name?></strong>
-	<address><?="$street<br>$city, $state $zip"?></address>
 </aside>
 <hr>
 <form method="POST" action="confirmation.php">
@@ -66,17 +71,22 @@ $query->close();
 	<input type="hidden" name="child" value="<?=$_GET['child']?>">
 	<input type="hidden" name="senior" value="<?=$_GET['senior']?>">
 	<h2>Payment Information</h2>
-	<div class="saved">
-		Use a saved card
-		<select name="savedCard">
-			<?php foreach($cards as $card): ?>
-				<option value="<?=$card?>"><?=substr($card, -4)?></option>
-			<?php endforeach; ?>
-		</select>
-		<button name="use" value="saved">Buy Ticket<?=$totalTickets==1?'':'s'?></button>
-	</div>
+	<?php if(count($cards)>0): ?>
+		<div class="saved">
+			Use a saved card
+			<select name="savedCard">
+				<?php foreach($cards as $card): ?>
+					<option value="<?=$card?>"><?=substr($card, -4)?></option>
+				<?php endforeach; ?>
+			</select>
+			<button name="use" value="saved">Buy Ticket<?=$totalTickets==1?'':'s'?></button>
+		</div>
+	<?php endif; ?>
 		<div class="new">
-		<strong>Use a new card</strong><br>
+		<?php if(count($cards)>0) echo '<strong>Use a new card</strong><br>'; ?>
+		<?php if(@$_GET['error'] == 'card'): ?>
+			<p class="formError">Please fill out your payment information completely.</p>
+		<?php endif; ?>
 		<label for="name">Name on Card</label>
 		<input type="text" name="name" id="name">
 		<br>

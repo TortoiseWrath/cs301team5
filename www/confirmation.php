@@ -49,9 +49,15 @@ $orderID = $orderID + 1;
 
 $card = $_POST['use'] === 'new' ? $_POST['cardNumber'] : $_POST['savedCard'];
 
+if(empty($card) || $_POST['use'] === 'new' && (empty($_POST['name']) || empty($_POST['exp']) || empty($_POST['cvv']))) {
+	$url = 'payment.php?error=card&'.http_build_query($_POST);
+	header("Location: $url");
+	die();
+}
+
 if($_POST['use'] === 'new') {
 	// Save the card.
-	$saved = $_POST['save'] === 'on' ? 1 : 0;
+	$saved = @$_POST['save'] === 'on' ? 1 : 0;
 	$query = $db->prepare('INSERT INTO PAYMENT_INFO VALUES(?, ?, ?, ?, ?, ?)');
 	$query->bind_param('ssssis', $card, $_POST['exp'], $_POST['name'], $_POST['cvv'], $saved, $_SESSION['username']);
 	$query->execute();
@@ -71,22 +77,23 @@ $query->close();
 <title>Order Confirmation</title>
 <link rel="stylesheet" href="style.css">
 <h1>Buy Ticket</h1>
+<aside class="theater">
+	<strong><?=$name?></strong>
+	<address><?="$street<br>$city, $state $zip"?></address>
+</aside>
 <aside class="movie">
 	<strong><?=$_POST['title']?></strong>
 	<p class="rating"><?=$rating?>
 	<p class="length"><?=($length>60?(floor($length/60).' hr '):'').($length%60).' min'?>
-	<p class="genre"><?=$genre?>
 </aside>
 <aside class="showtime">
 	<?=date('l, F j',strtotime($_POST['time']))?>
 	<br>
 	<?=date('g:i A',strtotime($_POST['time']))?>
 </aside>
-<aside class="theater">
-	<strong><?=$name?></strong>
-	<address><?="$street<br>$city, $state $zip"?></address>
-</aside>
 <hr>
 <h2>Confirmation</h2>
-Order ID <span style="orderID"><?=$orderID?></span>
+<div class="left">
+Order ID <span class="orderID"><?=$orderID?></span>
 <p class="small">Thank you for your purchase! Please save order ID for your records.
+</div>
