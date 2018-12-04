@@ -13,6 +13,9 @@ $title = $_GET['title'];
 <link rel="stylesheet" href="style.css">
 <h1>Choose Theater</h1>
 <form method="GET">
+	<?php if(@$_GET['error'] == 'theater'): ?>
+		<p class="formError">You must choose a theater.</p>
+	<?php endif; ?>
 	<input type="hidden" name="title" value="<?=htmlspecialchars($_GET['title'])?>">
 	<p>
 	<?php

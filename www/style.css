@@ -42,7 +42,7 @@ a:active {
   outline: 0;
 }
 
-input, button {
+input, button, select {
 	background-color: #fff;
 	color: #000;
 	padding: 0.3em;
@@ -124,7 +124,7 @@ ul {
 	margin: 1em 0 1.4em 0;
 }
 
-ul.errors > li {
+ul.errors > li, p.formError {
 	display: block;
 	width: 100%;
 	border: 2pt solid red;
@@ -134,6 +134,7 @@ ul.errors > li {
 	padding: 0.5em;
 	margin-bottom: 0.5em;
 	box-sizing: border-box;
+	text-align: center;
 }
 
 /* Now Playing */
@@ -199,7 +200,7 @@ body>h2+aside {
 	float: left;
 	margin-left: 2em;
 	background-color: #262626;
-	color: #fff;
+	color: #ccc;
 	min-width: 3in;
 	font-style: italic;
 	font-family: serif;
@@ -213,22 +214,26 @@ body>h2+aside>p.released {
 	margin-top: 1em;
 }
 
-body>h2+aside>p.released>span {
+body>h2+aside>p.released>span, aside>strong {
 	display: block;
 	font-style: normal;
 	font-family: 'Impact', sans-serif;
+	font-weight: inherit;
 	text-transform: uppercase;
 	margin: 0.2em 0 0.3em 0;
 	font-size: 150%;
+	color: #fff;
 }
 
-body>h2+aside>p.rating, body>h2+aside>p.length {
+aside>p.rating, aside>p.length {
 	display: inline;
 	margin: 0;
 }
 
-body>h2+aside>p.rating:after {
+aside>p.rating:after {
 	content: ', ';
+	margin-left: -0.3ex;
+	margin-right: 0.2em;
 }
 
 body>h2+aside>p.score {
@@ -356,6 +361,246 @@ table.reviews td:last-child::before {
 }
 
 body.reviews button { width: 10em; }
+
+/* Choose Theater */
+
+h1+form[method="GET"] {
+	width: 32em;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h1+form[method="GET"] button {
+	min-width: 7em;
+}
+
+h1+form[method="GET"] span, h1+form[method="GET"] li.error {
+	text-align: center;
+	width: 100%;
+	display: block;
+}
+
+h1+form[method="GET"] label {
+	display: inline-block;
+	vertical-align: middle;
+	margin-bottom: 0.2em;
+	width: 10em;
+}
+
+h1+form[method="GET"] input[type="text"], h1+form[method="GET"] select {
+	display: inline-block;
+	text-align: left;
+	margin: 0 2em 0.5em;
+	width: 17em;
+	vertical-align: bottom;
+	box-sizing: border-box;
+}
+
+h1+form[action="selecttime.php"] {
+	text-align: right;
+}
+
+h1+form[method="GET"] label[for^="theater"]:not([for="theaterID"]) {
+	width: calc(100% - 2em);
+	padding-bottom: 0.2em;
+	text-align: left;
+}
+
+h1+form[method="GET"] li:not(:last-of-type) label[for^="theater"] {
+	border-bottom: 3pt solid black;
+}
+
+h1+form[method="GET"] label[for^="theater"]>strong {
+	font-weight: inherit;
+	text-transform: uppercase;
+}
+
+h1+form[method="GET"] label[for^="theater"]>address {
+	font-style: normal;
+}
+
+h1+form[method="GET"] input:not([type="text"]) {
+	width: 2em;
+	margin: 0;
+	vertical-align: top;
+	margin-top: 0.4em;
+}
+
+input#save, label[for="save"] {
+	display: inline-block;
+	text-align: left;
+	margin-top: 0.5em;
+	vertical-align: middle;
+}
+
+/* Select Time */
+
+h1+aside, p.formError+aside {
+	float: left;
+	margin-left: 2em;
+	min-width: 3in;
+	font-style: italic;
+	font-family: serif;
+	color: #666;
+	text-align: left;
+}
+
+aside>strong {
+	color: #333;
+	margin-bottom: 1em;
+}
+
+h1+aside>p.genre, p.formError+aside>p.genre {
+	margin-top: 0;
+}
+
+/* Tickets */
+
+hr {
+	border-top: 3pt solid black;
+}
+
+aside.movie, aside.showtime {
+	float: none;
+	width: 3in;
+	text-align: left;
+	margin-left: 1in;
+}
+
+aside.movie>p {
+	font-style: italic;
+	font-size: 90%;
+	font-family: serif;
+}
+
+aside.movie>strong {
+	margin-bottom: 0;
+}
+
+aside.theater {
+	float: right;
+	max-width: calc(100% - 4in);
+}
+
+aside.theater>strong {
+	text-transform: none;
+	font-family: sans-serif;
+	font-size: 120%;
+	font-weight: bold;
+	margin: 0;
+}
+
+aside.theater>address {
+	font-style: normal;
+	color: #333;
+}
+
+aside.showtime {
+	font-size: 80%;
+	font-weight: bold;
+	padding: 0.5em;
+}
+
+form[action="payment.php"] {
+	text-align: right;
+}
+
+form[action="payment.php"] th {
+	padding-right: 0.7em;
+	text-align: left;
+}
+form[action="payment.php"] td {
+	padding-right: 0.5em;
+}
+
+form[action="payment.php"] tr:last-of-type th, form[action="payment.php"] td:last-child {
+	text-align: right;
+}
+
+form[action="payment.php"] tr td:nth-child(3) {
+	text-align: left;
+}
+
+/* Payment Information */
+form div.saved {
+	margin-bottom: 1em;
+	text-align: left;
+	line-height: 1.8;
+	vertical-align: bottom;
+}
+
+form div.saved select {
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
+form div.saved button {
+	width: 8em;
+	vertical-align: top;
+	line-height: 1.2;
+}
+
+form div.new>strong {
+	display: inline-block;
+	margin-bottom: 0.5em;
+	font-size: 110%;
+}
+
+form div.new {
+	text-align: left;
+}
+
+form div.new label:not([for="save"]) {
+	display: inline-block;
+	width: 10em;
+}
+
+form div.new input[type="text"] {
+	width: 15em;
+	font: inherit;
+}
+
+input[type="date"] {
+	font: inherit;
+}
+
+input#cvv {
+	width: 4ex;
+}
+
+form div.new input:not([type="checkbox"]) {
+	margin-bottom: 0.5em;
+}
+
+input#save {
+	margin-left: 1in;
+}
+
+input#save+label {
+	margin-right: 1em;
+}
+
+/* Confirmation */
+div.left {
+	text-align: left;
+}
+
+span.orderID {
+	display: inline-block;
+	border: 2pt solid black;
+	margin-left: 10em;
+	padding: 0.3em;
+	min-width: 5em;
+}
+
+p.small {
+	font-size: 70%;
+}
+
+p.formError {
+	margin-top: 0.2em;
+}
 
 /* Order History */
 

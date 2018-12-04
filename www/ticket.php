@@ -7,7 +7,11 @@ if(!isset($_SESSION['username'])) {
 }
 if(!isset($_GET['title'])) die('No movie specified!');
 if(!isset($_GET['theaterID'])) die('No theater specified!');
-if(!isset($_GET['time'])) die('No showtime specified!');
+if(!isset($_GET['time']) || empty($_GET['time'])) {
+	$url = 'selecttime.php?error=time&'.http_build_query($_GET);
+	header("Location: $url");
+	die();
+}
 
 require_once('config.php');
 
@@ -69,20 +73,19 @@ $query->close();
 	});
 </script>
 <h1>Buy Ticket</h1>
+<aside class="theater">
+	<strong><?=$name?></strong>
+	<address><?="$street<br>$city, $state $zip"?></address>
+</aside>
 <aside class="movie">
 	<strong><?=$_GET['title']?></strong>
 	<p class="rating"><?=$rating?>
 	<p class="length"><?=($length>60?(floor($length/60).' hr '):'').($length%60).' min'?>
-	<p class="genre"><?=$genre?>
 </aside>
 <aside class="showtime">
 	<?=date('l, F j',strtotime($_GET['time']))?>
 	<br>
 	<?=date('g:i A',strtotime($_GET['time']))?>
-</aside>
-<aside class="theater">
-	<strong><?=$name?></strong>
-	<address><?="$street<br>$city, $state $zip"?></address>
 </aside>
 <hr>
 <form method="GET" action="payment.php">
@@ -90,6 +93,9 @@ $query->close();
 	<input type="hidden" name="theaterID" value="<?=htmlspecialchars($_GET['theaterID'])?>">
 	<input type="hidden" name="time" value="<?=htmlspecialchars($_GET['time'])?>">
 	<h2>How many ticket?</h2>
+	<?php if(@$_GET['error'] == 'zero'): ?>
+		<p class="formError">You must buy at least one ticket.</p>
+	<?php endif; ?>
 	<table>
 		<tr class="adult">
 			<th>Adult</th>
