@@ -24,16 +24,28 @@ if(!isset($_GET['q'])) die('No search query specified!');
 	$query->store_result();
 	$theaterID = $theaterName = $state = $city = $street = $zip = NULL;
 	$query->bind_result($theaterID, $theaterName, $state, $city, $street, $zip);
-	while($query->fetch()): ?>
+	$n = 0;
+	while($query->fetch()): $n++; ?>
 		<li>
 			<input type="radio" name="theaterID" value="<?=$theaterID?>" id="theater<?=$theaterID?>">
 			<label for="theater<?=$theaterID?>"><strong><?=$theaterName?></strong><address><?="$street, $city, $state $zip"?></address></label>
 		</li>
 	<?php endwhile;
-	$query->close();
+	if($n === 0): ?>
+		<li class="error">
+			No theaters were found matching your criteria.
+			<input type="hidden" value="" name="q">
+			<button formaction="results.php">View all theaters where <?=$_GET['title']?> is playing</button>
+		</li>
+		<?php
+	endif;
 	?>
 	</ul>
+	<?php if($n > 0): ?>
 	<input type="checkbox" id="save" name="save">
 	<label for="save">Save this theater</label>
 	<button>Next</button>
+<?php endif;
+$query->close();
+?>
 </form>
