@@ -6,7 +6,7 @@ $title = $_GET['title'];
 <title><?=$_GET['title']?></title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-<h1><?=$_GET['title']?></h1>
+<h2><?=$_GET['title']?></h2>
 <?php
 	require_once('config.php');
 	$query = $db->prepare('SELECT releaseDate, MOVIE.rating, length, genre, COUNT(REVIEW.reviewID) AS reviews, AVG(REVIEW.rating) AS avgScore FROM MOVIE LEFT JOIN REVIEW ON MOVIE.title = REVIEW.title WHERE MOVIE.title = ?');
@@ -19,7 +19,7 @@ $title = $_GET['title'];
 	}
 ?>
 <aside>
-	<p class="released">Released: <span><?=$releaseDate?></span>
+	<p class="released">Released <span><?=date('F j, Y', strtotime($releaseDate))?></span>
 	<p class="rating"><?=$rating?>
 	<p class="length"><?=($length>60?(floor($length/60).' hr '):'').($length%60).' min'?>
 	<p class="genre"><?=$genre?>
@@ -41,5 +41,5 @@ $title = $_GET['title'];
 	<input type="hidden" name="title" value="<?=$_GET['title']?>">
 	<button formaction="overview.php">Overview</button>
 	<button formaction="review.php">Movie Review</button>
-	<button formaction="choosetheater.php">Choose Theater</button>
+	<button formaction="choosetheater.php">Buy Ticket</button>
 </form>

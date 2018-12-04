@@ -195,7 +195,77 @@ ul:not([class])>li>a {
 
 /* Movie */
 
+body>h2+aside {
+	float: left;
+	margin-left: 2em;
+	background-color: #262626;
+	color: #fff;
+	min-width: 3in;
+	font-style: italic;
+	font-family: serif;
+}
 
+body>h2+aside>p {
+	margin: 0 1em 0;
+}
+
+body>h2+aside>p.released {
+	margin-top: 1em;
+}
+
+body>h2+aside>p.released>span {
+	display: block;
+	font-style: normal;
+	font-family: 'Impact', sans-serif;
+	text-transform: uppercase;
+	margin: 0.2em 0 0.3em 0;
+	font-size: 150%;
+}
+
+body>h2+aside>p.rating, body>h2+aside>p.length {
+	display: inline;
+	margin: 0;
+}
+
+body>h2+aside>p.rating:after {
+	content: ', ';
+}
+
+body>h2+aside>p.score {
+	margin-top: 1em;
+	font-size: 120%;
+}
+
+body>h2+aside>p.score a {
+	display: inline-block;
+	color: #ef5825;
+	padding-bottom: 0.3em;
+}
+
+body>h2+aside>p.reviews {
+	margin-bottom: 1em;
+}
+
+body>h2+aside>p.reviews a {
+	display: block;
+	color: #fff;
+}
+
+body>aside+form {
+	float: right;
+	width: calc((3in - 10em) / 2 + 12em);
+}
+
+body>aside+form button {
+	display: block;
+	width: 10em;
+	margin-top: 1em;
+}
+
+body>aside+form button:active {
+	margin-top: 1.2em;
+	margin-bottom: -0.2em;
+}
 
 /* Order History */
 
