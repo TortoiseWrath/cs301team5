@@ -60,6 +60,7 @@ button {
 	vertical-align: top;
 	font: inherit;
 	font-size: smaller;
+	min-width: 5em;
 }
 
 button:active {
@@ -117,7 +118,7 @@ input.error:hover, input.error:active {
 	background-color: #ffe8e8;
 }
 
-ul.errors {
+ul {
 	list-style-type: none;
 	padding: 0;
 	margin: 1em 0 1.4em 0;
@@ -149,6 +150,7 @@ ul.nowplaying {
   font-size: 0;
   box-shadow: inset 0 0 0 2pt black;
 }
+
 ul.nowplaying li {
   display: inline-block;
   font-size: 1rem;
@@ -181,6 +183,19 @@ nav.me > a:hover img,
 nav.me > a:active img {
   filter: url(#mef); /* Change color */
 }
+
+/* Me */
+
+ul:not([class])>li>a {
+	display: block;
+	margin-bottom: 2em;
+	text-decoration: underline;
+	color: #275d98;
+}
+
+/* Movie */
+
+
 
 /* Order History */
 
