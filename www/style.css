@@ -296,6 +296,67 @@ body>h2+article+form>button {
 	width: 10em;
 }
 
+/* Reviews */
+
+body.reviews {
+	text-align: left;
+}
+
+body.reviews>h1 {
+	display: inline-block;
+	text-align: left;
+	margin: 0;
+	vertical-align: top;
+}
+
+body.reviews>p.avgRating {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0.5em 0 2em 3em;
+}
+
+body.reviews>form:first-of-type {
+	width: 100%;
+	text-align: center;
+}
+
+body.reviews>form:first-of-type button {
+	width: 90%;
+}
+
+table.reviews {
+	margin: 1em 0 1em;
+	display: block;
+}
+
+table.reviews>thead {
+	display: none;
+}
+
+table.reviews * {
+	display: block;
+}
+
+table.reviews tr {
+	margin: 1em 0 1em;
+	border: 2pt solid black;
+	padding: 0.3em;
+}
+
+table.reviews td:first-child:before {
+	content: 'Title: ';
+}
+
+table.reviews td:nth-child(2):before {
+	content: 'Rating: ';
+}
+
+table.reviews td:last-child::before {
+	content: 'Comment: ';
+}
+
+body.reviews button { width: 10em; }
+
 /* Order History */
 
 .order-history__table {
