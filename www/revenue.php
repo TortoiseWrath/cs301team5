@@ -27,7 +27,7 @@ $query = $db->prepare('SELECT childDiscount, seniorDiscount FROM SYSTEMINFO');
 	  $query->execute();
 	  $query->fetch();
 	  $query->close();
-$query = $db->prepare('SELECT month(date), SUM(adultTickets * ticketPrice), SUM(childTickets * ticketPrice), SUM(seniorTickets * ticketPrice) FROM ORDERS GROUP BY month(date) ORDER BY month(date) DESC LIMIT 3');
+$query = $db->prepare('SELECT month(date), SUM(adultTickets * ticketPrice), SUM(childTickets * ticketPrice), SUM(seniorTickets * ticketPrice) FROM ORDERS WHERE status <> "Cancelled" GROUP BY month(date) ORDER BY month(date) DESC LIMIT 3');
 $query->execute();
 $month = $adulttickets = $childtickets = $seniortickets = NULL;
 $query->bind_result($month, $adulttickets, $childtickets, $seniortickets);
