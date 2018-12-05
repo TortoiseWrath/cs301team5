@@ -34,7 +34,9 @@ if(!isset($_SESSION['username'])) {
 	      $theaterID = $name = $state = $city = $street = $zip = NULL;
 	      $query->bind_result($theaterID, $name, $state, $city, $street, $zip);
 
-        while($query->fetch()):
+		 $n = 0;
+
+        while($query->fetch()): $n++;
 			  ?>
 		  		<li>
 		  			<input type="radio" name="theaterID" value="<?=$theaterID?>" id="theater<?=$theaterID?>">
@@ -43,11 +45,15 @@ if(!isset($_SESSION['username'])) {
 
 	      <?php endwhile;
         $query->close();
+		if($n == 0):
         ?>
+			<p class="formError">You have no preferred theaters.</p>
+		<?php endif;?>
 
 	    </ul>
 		<div class="preferred">
-		    <button class="space">Delete</button>
+			<?php if($n > 0): ?>
+		    <button class="space">Delete</button> <?php endif; ?>
 		    <button formaction="me.php" >Back</button>
 		</div>
   	</form>

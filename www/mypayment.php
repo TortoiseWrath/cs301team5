@@ -41,7 +41,9 @@ if(!isset($_SESSION['username'])) {
 	      $cardNumber = $expirationDate = $nameOnCard = NULL;
 	      $query->bind_result($cardNumber, $expirationDate, $nameOnCard);
 
-        while($query->fetch()):
+		  $n = 0;
+
+        while($query->fetch()): $n++;
 			  ?>
 
         <tr>
@@ -57,7 +59,13 @@ if(!isset($_SESSION['username'])) {
 
 	    </table>
 
+		<?php
+		if($n == 0):
+		 ?>
+		 <p class="formError">You have no saved payment information. </p>
+	 <?php else: ?>
 	    <button class="space">Delete</button>
+	<?php endif; ?>
 	    <button formaction="me.php" >Back</button>
   	</form>
   </body>
