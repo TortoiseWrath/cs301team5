@@ -77,7 +77,7 @@ SELECT cardNumber FROM PAYMENT_INFO WHERE username = ? AND expirationDate >= CUR
 -- To get an available order id:
 SELECT orderID FROM ORDERS ORDER BY cast(orderID as unsigned) DESC LIMIT 1
 -- To add a card to the database:
-INSERT INTO PAYMENT_INFO VALUES(?, ?, ?, ?, ?, ?)
+REPLACE INTO PAYMENT_INFO VALUES(?, ?, ?, ?, ?, ?)
 -- To add the order to the database:
 INSERT INTO ORDERS VALUES (?, CURDATE(), CURTIME(), "Completed", ?, ?, ?, ?, ?, ?, ?, ?, ?)
 -- To get the movie info:
@@ -98,9 +98,13 @@ SELECT childDiscount, seniorDiscount, cancellationFee FROM SYSTEMINFO
 SELECT * FROM ORDERS NATURAL JOIN THEATER NATURAL JOIN MOVIE WHERE orderID=?
 -- To get the discount percentages and cancellation fee:
 SELECT childDiscount, seniorDiscount, cancellationFee FROM SYSTEMINFO
+-- To cancel an order:
+UPDATE ORDERS SET status="Cancelled" WHERE orderID=?
 
 -- Fig 17. My Payment Information
 SELECT cardnumber, nameOnCard, expirationDate FROM PAYMENT_INFO WHERE username = ?
+-- To delete a saved card:
+UPDATE PAYMENT_INFO SET saved=0 WHERE cardnumber = ?
 
 -- Fig 18. My Preferred Theater
 SELECT THEATER.theaterID FROM THEATER NATURAL JOIN PREFERS WHERE username = ?

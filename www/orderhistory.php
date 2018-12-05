@@ -78,7 +78,8 @@ if(!isset($_SESSION['username'])) {
 
 	    </table>
 
-	    <button formaction="viewdetail.php" >View Detail</button>
+	    <button formaction="viewdetail.php" class="space">View Detail</button>
+		<button formaction="me.php">Back</button>
 	</form>
   </body>
 </html>

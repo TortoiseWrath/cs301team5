@@ -18,7 +18,7 @@ if(!isset($_SESSION['username'])) {
     <h1>My Payment Information</h1>
 
 	  <form method="POST">
-	    <table class="order-history__table" border="1">
+	    <table class="popular history" border="1">
 	      <tr>
 	        <th>Select</th>
 	        <th>Card Number</th>
@@ -48,7 +48,7 @@ if(!isset($_SESSION['username'])) {
           <td><input type="radio" name="cardNumber" id="cardNumber<?=$cardNumber?>" value="<?=$cardNumber?>"></td>
           <td><label for="cardNumber<?=$cardNumber?>"><?=$cardNumber?></label></td>
           <td><label for="cardNumber<?=$cardNumber?>"><?=$nameOnCard?></label></td>
-          <td><label for="cardNumber<?=$cardNumber?>"><?=$expirationDate?></label></td>
+          <td><label for="cardNumber<?=$cardNumber?>"><?=date('m/Y', strtotime($expirationDate))?></label></td>
         </tr>
 
 	      <?php endwhile;
@@ -57,7 +57,7 @@ if(!isset($_SESSION['username'])) {
 
 	    </table>
 
-	    <button>Delete</button>
+	    <button class="space">Delete</button>
 	    <button formaction="me.php" >Back</button>
   	</form>
   </body>
