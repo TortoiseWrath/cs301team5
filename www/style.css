@@ -737,3 +737,14 @@ body.givereviews div#gap {
 	height: 0.5em;
 	width: 1em;
 }
+
+/* Order History */
+table.history {
+	margin: 1em;
+}
+
+form.history>div>span, form.history>div>input {
+	vertical-align: bottom;
+	margin-bottom: 0.5em;
+	display: inline-block;
+}

@@ -17,14 +17,14 @@ if(!isset($_SESSION['username'])) {
   <body>
     <h1>Order History</h1>
 
-	<form>
+	<form class="history">
 	    <div>
 	      <span>Order ID</span>
 	      <input name="q"<?=isset($_GET['orderid'])?' value="'.$_GET['orderid'].'"':''?>>
 	      <button>Search</button>
 	    </div>
 
-	    <table class="order-history__table" border="1">
+	    <table class="popular history">
 	      <tr>
 	        <th>Select</th>
 	        <th>Order ID</th>
@@ -72,7 +72,7 @@ if(!isset($_SESSION['username'])) {
 	          <td><label for="order<?=$orderID?>"><?=htmlspecialchars($title)?></label></td>
 	          <td><label for="order<?=$orderID?>"><?=$status?></label></td>
 	          <td><label for="order<?=$orderID?>">$<?=number_format($totalPrice, 2)?></label></td>
-		  </tr></label>
+		  </tr>
 	      <?php endwhile;
 		  $query->close(); ?>
 
