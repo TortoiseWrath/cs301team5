@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <?php
+session_start();
+if(!isset($_SESSION['username'])) {
+	// User not logged in
+	header('Location: login.php');
+	die();
+}
 if(!isset($_GET['title'])) die('No movie specified!');
 $title = $_GET['title'];
 ?>
