@@ -35,10 +35,10 @@ SELECT rating, comment, AVG(REVIEW.rating) FROM MOVIE LEFT JOIN REVIEW ON MOVIE.
 -- Fig 8. Give Review
 -- Ensure the user has seen the movie before
 SELECT COUNT(*) FROM ORDERS WHERE username = ? AND title = ?
---the following statement should be used to insert the reviewID
-SELECT reviewID FROM REVIEWS ORDER BY cast(reviewID as unsigned) DESC LIMIT 1
---reviewID = the above + 1
-INSERT INTO REVIEW VALUES (?,?,?,?,?)
+--Get the last used reviewID
+SELECT reviewID FROM REVIEW ORDER BY cast(reviewID as unsigned) DESC LIMIT 1
+--reviewID = int(the above) + 1
+INSERT INTO REVIEW VALUES ("?",?,?,?,?)
 
 -- Fig 9. Choose Theater
 -- Get saved theaters that are showing the movie.

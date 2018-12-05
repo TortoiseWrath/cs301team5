@@ -371,18 +371,6 @@ body.reviews button {
   width: 10em;
 }
 
-/*Give Reviews*/
-body.givereviews {
-  text-align: left;
-}
-
-body.givereviews > h1 {
-  display: inline-block;
-  text-align: left;
-  margin: 0;
-  vertical-align: top;
-}
-
 /* Choose Theater */
 
 h1 + form[method="GET"] {
@@ -717,4 +705,35 @@ table.popular tbody {
 .preferred-theater li label {
   padding-left: 50px;
   text-align: left;
+}
+
+/* Give Review */
+
+body.givereviews {
+	text-align: left;
+}
+
+body.givereviews select {
+	margin-bottom: 0.5em;
+}
+
+body.givereviews label {
+	vertical-align: top;
+}
+
+body.givereviews input#reviewTitle {
+	width: 20em;
+}
+
+body.givereviews textarea {
+	background-color: #fff;
+	border: 2pt solid black;
+	width: calc(100% - 18em);
+	height: 7em;
+}
+
+body.givereviews div#gap {
+	display: inline-block;
+	height: 0.5em;
+	width: 1em;
 }
