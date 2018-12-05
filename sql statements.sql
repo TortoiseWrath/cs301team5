@@ -107,7 +107,9 @@ SELECT cardnumber, nameOnCard, expirationDate FROM PAYMENT_INFO WHERE username =
 UPDATE PAYMENT_INFO SET saved=0 WHERE cardnumber = ?
 
 -- Fig 18. My Preferred Theater
-SELECT THEATER.theaterID FROM THEATER NATURAL JOIN PREFERS WHERE username = ?
+SELECT theaterID, name, state, city, street, zip FROM THEATER NATURAL JOIN PREFERS WHERE username = ?
+-- To delete:
+DELETE FROM PREFERS WHERE theaterID=? AND username=?
 
 -- Fig 19. Choose Functionality
 -- No SQL on this page.
