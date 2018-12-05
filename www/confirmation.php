@@ -58,7 +58,7 @@ if(empty($card) || $_POST['use'] === 'new' && (empty($_POST['name']) || empty($_
 if($_POST['use'] === 'new') {
 	// Save the card.
 	$saved = @$_POST['save'] === 'on' ? 1 : 0;
-	$query = $db->prepare('INSERT INTO PAYMENT_INFO VALUES(?, ?, ?, ?, ?, ?)');
+	$query = $db->prepare('REPLACE INTO PAYMENT_INFO VALUES(?, ?, ?, ?, ?, ?)');
 	$query->bind_param('ssssis', $card, $_POST['exp'], $_POST['name'], $_POST['cvv'], $saved, $_SESSION['username']);
 	$query->execute();
 	$query->close();
