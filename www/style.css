@@ -124,7 +124,7 @@ ul {
 	margin: 1em 0 1.4em 0;
 }
 
-ul.errors > li, p.formError {
+ul.errors > li, p.formError, p.loginError {
 	display: block;
 	width: 100%;
 	border: 2pt solid red;
