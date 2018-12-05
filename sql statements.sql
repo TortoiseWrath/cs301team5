@@ -109,8 +109,10 @@ SELECT THEATER.theaterID FROM THEATER NATURAL JOIN PREFERS WHERE username = ?
 -- No SQL on this page.
 
 -- Fig 20. View Revenue Report
-SELECT childDiscount, seniorDiscount FROM SYSTEMINFO
-SELECT month(date), SUM(adultTickets * ticketPrice), SUM(childTickets * ticketPrice), SUM(seniorTickets * ticketPrice) FROM ORDERS GROUP BY month(date) ORDER BY month(date) DESC LIMIT 3
+-- Get system info
+SELECT childDiscount, seniorDiscount, cancellationFee FROM SYSTEMINFO
+-- Get info on completed orders
+SELECT month(date), SUM(adultTickets * ticketPrice), SUM(childTickets * ticketPrice), SUM(seniorTickets * ticketPrice) FROM ORDERS WHERE status <> "Cancelled" GROUP BY month(date) ORDER BY month(date) DESC LIMIT 3
 
 -- Fig 21. View Popular Movie Report
-SELECT count(*) AS total, title as month FROM ORDERS AS q1 WHERE q1.status <> "cancelled" AND month(date) = ? AND year(date) = ? GROUP BY month(date), title ORDER BY total DESC LIMIT 3
+SELECT count(*) AS total, title as month FROM ORDERS WHERE status <> "Cancelled" AND month(date) = ? AND year(date) = ? GROUP BY month(date), title ORDER BY total DESC LIMIT 3

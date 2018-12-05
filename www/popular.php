@@ -30,7 +30,7 @@ for($month = intval(date('n')) - 2; $month <= intval(date('n')); $month++):
 	if($month > intval(date('n'))) $year--;
 
 
-	$query = $db->prepare('SELECT count(*) AS total, title as month FROM ORDERS AS q1 WHERE q1.status <> "cancelled" AND month(date) = ? AND year(date) = ? GROUP BY month(date), title ORDER BY total DESC LIMIT 3');
+	$query = $db->prepare('SELECT count(*) AS total, title as month FROM ORDERS AS q1 WHERE q1.status <> "Cancelled" AND month(date) = ? AND year(date) = ? GROUP BY month(date), title ORDER BY total DESC LIMIT 3');
 	$query->bind_param('ii', $month, $year);
 	$query->execute();
 	$title = $total = NULL;
