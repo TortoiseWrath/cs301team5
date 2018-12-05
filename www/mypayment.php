@@ -17,7 +17,7 @@ if(!isset($_SESSION['username'])) {
   <body>
     <h1>My Payment Information</h1>
 
-	  <form>
+	  <form method="POST">
 	    <table class="order-history__table" border="1">
 	      <tr>
 	        <th>Select</th>
@@ -28,10 +28,12 @@ if(!isset($_SESSION['username'])) {
 
 	      <?php
         require_once('config.php');
-        
-        // TODO
-        // UPDATE SQL Statement
-        // UPDATE PAYMENT_INFO SET saved=false WHERE cardNumber=?
+
+	  if(isset($_POST['cardNumber'])) {
+	      $query = $db->prepare('UPDATE PAYMENT_INFO SET saved=0 WHERE cardnumber = ?');
+		  $query->bind_param('s', $_POST['cardNumber']);
+		  $query->execute();
+	  }
 
         $query = $db->prepare('SELECT cardNumber, expirationDate, nameOnCard FROM PAYMENT_INFO WHERE saved=true AND username=?');
         $query->bind_param('s', $_SESSION['username']);
