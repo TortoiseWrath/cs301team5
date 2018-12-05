@@ -21,12 +21,7 @@ SELECT username, email FROM (SELECT * FROM CUSTOMER UNION SELECT * FROM MANAGER)
 SELECT DISTINCT title FROM MOVIE NATURAL JOIN PLAYS_AT WHERE playing = 1
 
 -- Fig 4. Me
---Order History
-SELECT * FROM ORDERS WHERE username = ?
---Payment Info
-SELECT * FROM PAYMENT_INFO WHERE username = ? AND saved = 1
---Preferred Theater
-SELECT THEATER.theaterID FROM THEATER NATURAL JOIN PREFERS WHERE username = ?
+-- No SQL on this page
 
 -- Fig 5. Movie
 SELECT MOVIE.title, releaseDate, MOVIE.rating, length, genre, COUNT(REVIEW.reviewID) AS reviews, AVG(REVIEW.rating) AS avgScore FROM MOVIE LEFT JOIN REVIEW ON MOVIE.title = REVIEW.title WHERE MOVIE.title = ?
@@ -108,9 +103,14 @@ SELECT childDiscount, seniorDiscount, cancellationFee FROM SYSTEMINFO
 SELECT cardnumber, nameOnCard, expirationDate FROM PAYMENT_INFO WHERE username = ?
 
 -- Fig 18. My Preferred Theater
+SELECT THEATER.theaterID FROM THEATER NATURAL JOIN PREFERS WHERE username = ?
 
 -- Fig 19. Choose Functionality
+-- No SQL on this page.
 
 -- Fig 20. View Revenue Report
+SELECT childDiscount, seniorDiscount FROM SYSTEMINFO
+SELECT month(date), SUM(adultTickets * ticketPrice), SUM(childTickets * ticketPrice), SUM(seniorTickets * ticketPrice) FROM ORDERS GROUP BY month(date) ORDER BY month(date) DESC LIMIT 3
 
 -- Fig 21. View Popular Movie Report
+SELECT count(*) AS total, title as month FROM ORDERS AS q1 WHERE q1.status <> "cancelled" AND month(date) = ? AND year(date) = ? GROUP BY month(date), title ORDER BY total DESC LIMIT 3
