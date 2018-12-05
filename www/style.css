@@ -619,32 +619,50 @@ p.formError {
 
 /* View Revenue Report */
 
-table.revenue {
+table.revenue, table.popular {
 	text-align: left;
 	width: 100%;
-	border: 2pt solid black;
 	border-collapse: collapse;
+	border: 2pt solid black;
 }
 
-table.revenue tr:nth-child(2n) {
+table.revenue tr:nth-child(2n), table.popular tr:nth-child(2n) {
 	background-color: #eee;
 }
 
-table.revenue th, td {
+table.revenue th, table.revenue td {
 	padding: 0.3em;
 	width: 50%;
 }
 
-table.revenue th {
+table.revenue th, table.popular th {
 	background-color: #ccc;
 	padding-bottom: 0;
 }
 
-table.revenue td:not(:first-child), table.revenue th:not(:first-child) {
-	border-left: 2pt solid black;
+table.revenue td:not(:first-child), table.revenue th:not(:first-child), table.popular td:not(:first-child), table.popular th:not(:first-child) {
+	border-left: 2pt solid #000;
 }
 
-table.revenue+form {
+table.revenue+form, table.popular+form {
 	text-align: left;
 	margin: 4em 0 0 4em;
+}
+
+/* View Popular Movie Report */
+
+table.popular tr:not(.first) td:first-child {
+	color: transparent;
+}
+
+table.popular td, table.popular th {
+	padding: 0.3em;
+}
+
+table.popular th {
+	padding-bottom: 0;
+}
+
+table.popular tbody {
+	border-collapse: collapse;
 }
