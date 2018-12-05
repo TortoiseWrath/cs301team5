@@ -11,9 +11,9 @@ html {
 }
 
 body {
-	width: 8in;
-	margin-left: auto;
-	margin-right: auto;
+  width: 8in;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h1 {
@@ -23,9 +23,9 @@ h1 {
 }
 
 h2 {
-	color: #bf9000;
-	font-size: 20pt;
-	text-align: left;
+  color: #bf9000;
+  font-size: 20pt;
+  text-align: left;
 }
 
 a {
@@ -42,99 +42,105 @@ a:active {
   outline: 0;
 }
 
-input, button, select {
-	background-color: #fff;
-	color: #000;
-	padding: 0.3em;
-	border: 2pt solid black;
+input,
+button,
+select {
+  background-color: #fff;
+  color: #000;
+  padding: 0.3em;
+  border: 2pt solid black;
 }
 
-input:hover, button:hover, button:active {
-	background-color: #eee;
+input:hover,
+button:hover,
+button:active {
+  background-color: #eee;
 }
 
 button {
-	display: inline-block;
-	box-shadow: 0.2em 0.2em 0 0 black;
-	margin: 0.2em;
-	vertical-align: top;
-	font: inherit;
-	font-size: smaller;
-	min-width: 5em;
+  display: inline-block;
+  box-shadow: 0.2em 0.2em 0 0 black;
+  margin: 0.2em;
+  vertical-align: top;
+  font: inherit;
+  font-size: smaller;
+  min-width: 5em;
 }
 
 button:active {
-	box-shadow: none;
-	margin: 0.4em 0 0 0.4em;
+  box-shadow: none;
+  margin: 0.4em 0 0 0.4em;
 }
 
 button.space {
-	margin-right: 5.2em;
+  margin-right: 5.2em;
 }
 
 button.space:active {
-	margin-right: 5em;
+  margin-right: 5em;
 }
 
 div.buttons {
-	border: 1px solid black;
+  border: 1px solid black;
 }
 
 /* Login and Register */
-form.login+img {
-	float: right;
-	width: auto;
-	height: 2in;
+form.login + img {
+  float: right;
+  width: auto;
+  height: 2in;
 }
 
 p.loginError {
-	color: #f00;
+  color: #f00;
 }
 
-form[method="POST"]>label {
-	display: inline-block;
-	text-align: left;
-	width: 6em;
+form[method="POST"] > label {
+  display: inline-block;
+  text-align: left;
+  width: 6em;
 }
 
-form[method="POST"]>input {
-	display: inline-block;
-	text-align: left;
-	margin-bottom: 0.5em;
-	width: 12em;
+form[method="POST"] > input {
+  display: inline-block;
+  text-align: left;
+  margin-bottom: 0.5em;
+  width: 12em;
 }
 
 /* Register */
-form:not(.login)>label {
-	width: 10em;
+form:not(.login) > label {
+  width: 10em;
 }
 
 input.error {
-	border-color: #f00;
-	background-color: #fff3f3;
+  border-color: #f00;
+  background-color: #fff3f3;
 }
 
-input.error:hover, input.error:active {
-	background-color: #ffe8e8;
+input.error:hover,
+input.error:active {
+  background-color: #ffe8e8;
 }
 
 ul {
-	list-style-type: none;
-	padding: 0;
-	margin: 1em 0 1.4em 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 1em 0 1.4em 0;
 }
 
-ul.errors > li, p.formError {
-	display: block;
-	width: 100%;
-	border: 2pt solid red;
-	color: red;
-	background-color: #fff3f3;
-	font-size: smaller;
-	padding: 0.5em;
-	margin-bottom: 0.5em;
-	box-sizing: border-box;
-	text-align: center;
+ul.errors > li,
+p.formError {
+  display: block;
+  width: 100%;
+  border: 2pt solid red;
+  color: red;
+  background-color: #fff3f3;
+  font-size: smaller;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 /* Now Playing */
@@ -187,419 +193,430 @@ nav.me > a:active img {
 
 /* Me */
 
-ul:not([class])>li>a {
-	display: block;
-	margin-bottom: 2em;
-	text-decoration: underline;
-	color: #275d98;
+ul:not([class]) > li > a {
+  display: block;
+  margin-bottom: 2em;
+  text-decoration: underline;
+  color: #275d98;
 }
 
 /* Movie */
 
-body>h2+aside {
-	float: left;
-	margin-left: 2em;
-	background-color: #262626;
-	color: #ccc;
-	min-width: 3in;
-	font-style: italic;
-	font-family: serif;
+body > h2 + aside {
+  float: left;
+  margin-left: 2em;
+  background-color: #262626;
+  color: #ccc;
+  min-width: 3in;
+  font-style: italic;
+  font-family: serif;
 }
 
-body>h2+aside>p {
-	margin: 0 1em 0;
+body > h2 + aside > p {
+  margin: 0 1em 0;
 }
 
-body>h2+aside>p.released {
-	margin-top: 1em;
+body > h2 + aside > p.released {
+  margin-top: 1em;
 }
 
-body>h2+aside>p.released>span, aside>strong {
-	display: block;
-	font-style: normal;
-	font-family: 'Impact', sans-serif;
-	font-weight: inherit;
-	text-transform: uppercase;
-	margin: 0.2em 0 0.3em 0;
-	font-size: 150%;
-	color: #fff;
+body > h2 + aside > p.released > span,
+aside > strong {
+  display: block;
+  font-style: normal;
+  font-family: "Impact", sans-serif;
+  font-weight: inherit;
+  text-transform: uppercase;
+  margin: 0.2em 0 0.3em 0;
+  font-size: 150%;
+  color: #fff;
 }
 
-aside>p.rating, aside>p.length {
-	display: inline;
-	margin: 0;
+aside > p.rating,
+aside > p.length {
+  display: inline;
+  margin: 0;
 }
 
-aside>p.rating:after {
-	content: ', ';
-	margin-left: -0.3ex;
-	margin-right: 0.2em;
+aside > p.rating:after {
+  content: ", ";
+  margin-left: -0.3ex;
+  margin-right: 0.2em;
 }
 
-body>h2+aside>p.score {
-	margin-top: 1em;
-	font-size: 120%;
+body > h2 + aside > p.score {
+  margin-top: 1em;
+  font-size: 120%;
 }
 
-body>h2+aside>p.score a {
-	display: inline-block;
-	color: #ef5825;
-	padding-bottom: 0.3em;
+body > h2 + aside > p.score a {
+  display: inline-block;
+  color: #ef5825;
+  padding-bottom: 0.3em;
 }
 
-body>h2+aside>p.reviews {
-	margin-bottom: 1em;
+body > h2 + aside > p.reviews {
+  margin-bottom: 1em;
 }
 
-body>h2+aside>p.reviews a {
-	display: block;
-	color: #fff;
+body > h2 + aside > p.reviews a {
+  display: block;
+  color: #fff;
 }
 
-body>h2+aside+form {
-	float: right;
-	width: calc((3in - 10em) / 2 + 12em);
+body > h2 + aside + form {
+  float: right;
+  width: calc((3in - 10em) / 2 + 12em);
 }
 
-body>h2+aside+form button {
-	display: block;
-	width: 10em;
-	margin-top: 1em;
+body > h2 + aside + form button {
+  display: block;
+  width: 10em;
+  margin-top: 1em;
 }
 
-body>h2+aside+form button:active {
-	margin-top: 1.2em;
-	margin-bottom: -0.2em;
+body > h2 + aside + form button:active {
+  margin-top: 1.2em;
+  margin-bottom: -0.2em;
 }
 
 /* Overview */
 
-body>h2+article {
-	width: 100%;
-	text-align: left;
-	margin-left: 1em;
+body > h2 + article {
+  width: 100%;
+  text-align: left;
+  margin-left: 1em;
 }
 
-body>h2+article>h3 {
-	font-family: serif;
-	font-weight: normal;
-	font-size: 100%;
-	font-style: italic;
+body > h2 + article > h3 {
+  font-family: serif;
+  font-weight: normal;
+  font-size: 100%;
+  font-style: italic;
 }
 
-body>h2+article>*.cast {
-	font-size: 120%;
-	margin: 1rem 0 1rem;
+body > h2 + article > *.cast {
+  font-size: 120%;
+  margin: 1rem 0 1rem;
 }
 
-body>h2+article+form {
-	width: 100%;
-	text-align: left;
-	margin-left: 1em;
+body > h2 + article + form {
+  width: 100%;
+  text-align: left;
+  margin-left: 1em;
 }
-body>h2+article+form>button {
-	width: 10em;
+body > h2 + article + form > button {
+  width: 10em;
 }
 
 /* Reviews */
 
 body.reviews {
-	text-align: left;
+  text-align: left;
 }
 
-body.reviews>h1 {
-	display: inline-block;
-	text-align: left;
-	margin: 0;
-	vertical-align: top;
+body.reviews > h1 {
+  display: inline-block;
+  text-align: left;
+  margin: 0;
+  vertical-align: top;
 }
 
-body.reviews>p.avgRating {
-	display: inline-block;
-	vertical-align: top;
-	margin: 0.5em 0 2em 3em;
+body.reviews > p.avgRating {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0.5em 0 2em 3em;
 }
 
-body.reviews>form:first-of-type {
-	width: 100%;
-	text-align: center;
+body.reviews > form:first-of-type {
+  width: 100%;
+  text-align: center;
 }
 
-body.reviews>form:first-of-type button {
-	width: 90%;
+body.reviews > form:first-of-type button {
+  width: 90%;
 }
 
 table.reviews {
-	margin: 1em 0 1em;
-	display: block;
+  margin: 1em 0 1em;
+  display: block;
 }
 
-table.reviews>thead {
-	display: none;
+table.reviews > thead {
+  display: none;
 }
 
 table.reviews * {
-	display: block;
+  display: block;
 }
 
 table.reviews tr {
-	margin: 1em 0 1em;
-	border: 2pt solid black;
-	padding: 0.3em;
+  margin: 1em 0 1em;
+  border: 2pt solid black;
+  padding: 0.3em;
 }
 
 table.reviews td:first-child:before {
-	content: 'Title: ';
+  content: "Title: ";
 }
 
 table.reviews td:nth-child(2):before {
-	content: 'Rating: ';
+  content: "Rating: ";
 }
 
 table.reviews td:last-child::before {
-	content: 'Comment: ';
+  content: "Comment: ";
 }
 
-body.reviews button { width: 10em; }
+body.reviews button {
+  width: 10em;
+}
 
 /* Choose Theater */
 
-h1+form[method="GET"] {
-	width: 32em;
-	text-align: left;
-	margin-left: auto;
-	margin-right: auto;
+h1 + form[method="GET"] {
+  width: 32em;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-h1+form[method="GET"] button {
-	min-width: 7em;
+h1 + form[method="GET"] button {
+  min-width: 7em;
 }
 
-h1+form[method="GET"] span, h1+form[method="GET"] li.error {
-	text-align: center;
-	width: 100%;
-	display: block;
+h1 + form[method="GET"] span,
+h1 + form[method="GET"] li.error {
+  text-align: center;
+  width: 100%;
+  display: block;
 }
 
-h1+form[method="GET"] label {
-	display: inline-block;
-	vertical-align: middle;
-	margin-bottom: 0.2em;
-	width: 10em;
+h1 + form[method="GET"] label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0.2em;
+  width: 10em;
 }
 
-h1+form[method="GET"] input[type="text"], h1+form[method="GET"] select {
-	display: inline-block;
-	text-align: left;
-	margin: 0 2em 0.5em;
-	width: 17em;
-	vertical-align: bottom;
-	box-sizing: border-box;
+h1 + form[method="GET"] input[type="text"],
+h1 + form[method="GET"] select {
+  display: inline-block;
+  text-align: left;
+  margin: 0 2em 0.5em;
+  width: 17em;
+  vertical-align: bottom;
+  box-sizing: border-box;
 }
 
-h1+form[action="selecttime.php"] {
-	text-align: right;
+h1 + form[action="selecttime.php"] {
+  text-align: right;
 }
 
-h1+form[method="GET"] label[for^="theater"]:not([for="theaterID"]) {
-	width: calc(100% - 2em);
-	padding-bottom: 0.2em;
-	text-align: left;
+h1 + form[method="GET"] label[for^="theater"]:not([for="theaterID"]) {
+  width: calc(100% - 2em);
+  padding-bottom: 0.2em;
+  text-align: left;
 }
 
-h1+form[method="GET"] li:not(:last-of-type) label[for^="theater"] {
-	border-bottom: 3pt solid black;
+h1 + form[method="GET"] li:not(:last-of-type) label[for^="theater"] {
+  border-bottom: 3pt solid black;
 }
 
-h1+form[method="GET"] label[for^="theater"]>strong {
-	font-weight: inherit;
-	text-transform: uppercase;
+h1 + form[method="GET"] label[for^="theater"] > strong {
+  font-weight: inherit;
+  text-transform: uppercase;
 }
 
-h1+form[method="GET"] label[for^="theater"]>address {
-	font-style: normal;
+h1 + form[method="GET"] label[for^="theater"] > address {
+  font-style: normal;
 }
 
-h1+form[method="GET"] input:not([type="text"]) {
-	width: 2em;
-	margin: 0;
-	vertical-align: top;
-	margin-top: 0.4em;
+h1 + form[method="GET"] input:not([type="text"]) {
+  width: 2em;
+  margin: 0;
+  vertical-align: top;
+  margin-top: 0.4em;
 }
 
-input#save, label[for="save"] {
-	display: inline-block;
-	text-align: left;
-	margin-top: 0.5em;
-	vertical-align: middle;
+input#save,
+label[for="save"] {
+  display: inline-block;
+  text-align: left;
+  margin-top: 0.5em;
+  vertical-align: middle;
 }
 
 /* Select Time */
 
-h1+aside, p.formError+aside {
-	float: left;
-	margin-left: 2em;
-	min-width: 3in;
-	font-style: italic;
-	font-family: serif;
-	color: #666;
-	text-align: left;
+h1 + aside,
+p.formError + aside {
+  float: left;
+  margin-left: 2em;
+  min-width: 3in;
+  font-style: italic;
+  font-family: serif;
+  color: #666;
+  text-align: left;
 }
 
-aside>strong {
-	color: #333;
-	margin-bottom: 1em;
+aside > strong {
+  color: #333;
+  margin-bottom: 1em;
 }
 
-h1+aside>p.genre, p.formError+aside>p.genre {
-	margin-top: 0;
+h1 + aside > p.genre,
+p.formError + aside > p.genre {
+  margin-top: 0;
 }
 
 /* Tickets */
 
 hr {
-	border-top: 3pt solid black;
+  border-top: 3pt solid black;
 }
 
-aside.movie, aside.showtime {
-	float: none;
-	width: 3in;
-	text-align: left;
-	margin-left: 1in;
+aside.movie,
+aside.showtime {
+  float: none;
+  width: 3in;
+  text-align: left;
+  margin-left: 1in;
 }
 
-aside.movie>p {
-	font-style: italic;
-	font-size: 90%;
-	font-family: serif;
+aside.movie > p {
+  font-style: italic;
+  font-size: 90%;
+  font-family: serif;
 }
 
-aside.movie>strong {
-	margin-bottom: 0;
+aside.movie > strong {
+  margin-bottom: 0;
 }
 
 aside.theater {
-	float: right;
-	max-width: calc(100% - 4in);
+  float: right;
+  max-width: calc(100% - 4in);
 }
 
-aside.theater>strong {
-	text-transform: none;
-	font-family: sans-serif;
-	font-size: 120%;
-	font-weight: bold;
-	margin: 0;
+aside.theater > strong {
+  text-transform: none;
+  font-family: sans-serif;
+  font-size: 120%;
+  font-weight: bold;
+  margin: 0;
 }
 
-aside.theater>address {
-	font-style: normal;
-	color: #333;
+aside.theater > address {
+  font-style: normal;
+  color: #333;
 }
 
 aside.showtime {
-	font-size: 80%;
-	font-weight: bold;
-	padding: 0.5em;
+  font-size: 80%;
+  font-weight: bold;
+  padding: 0.5em;
 }
 
 form[action="payment.php"] {
-	text-align: right;
+  text-align: right;
 }
 
 form[action="payment.php"] th {
-	padding-right: 0.7em;
-	text-align: left;
+  padding-right: 0.7em;
+  text-align: left;
 }
 form[action="payment.php"] td {
-	padding-right: 0.5em;
+  padding-right: 0.5em;
 }
 
-form[action="payment.php"] tr:last-of-type th, form[action="payment.php"] td:last-child {
-	text-align: right;
+form[action="payment.php"] tr:last-of-type th,
+form[action="payment.php"] td:last-child {
+  text-align: right;
 }
 
 form[action="payment.php"] tr td:nth-child(3) {
-	text-align: left;
+  text-align: left;
 }
 
 /* Payment Information */
 form div.saved {
-	margin-bottom: 1em;
-	text-align: left;
-	line-height: 1.8;
-	vertical-align: bottom;
+  margin-bottom: 1em;
+  text-align: left;
+  line-height: 1.8;
+  vertical-align: bottom;
 }
 
 form div.saved select {
-	margin-left: 2em;
-	margin-right: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
 form div.saved button {
-	width: 8em;
-	vertical-align: top;
-	line-height: 1.2;
+  width: 8em;
+  vertical-align: top;
+  line-height: 1.2;
 }
 
-form div.new>strong {
-	display: inline-block;
-	margin-bottom: 0.5em;
-	font-size: 110%;
+form div.new > strong {
+  display: inline-block;
+  margin-bottom: 0.5em;
+  font-size: 110%;
 }
 
 form div.new {
-	text-align: left;
+  text-align: left;
 }
 
 form div.new label:not([for="save"]) {
-	display: inline-block;
-	width: 10em;
+  display: inline-block;
+  width: 10em;
 }
 
 form div.new input[type="text"] {
-	width: 15em;
-	font: inherit;
+  width: 15em;
+  font: inherit;
 }
 
 input[type="date"] {
-	font: inherit;
+  font: inherit;
 }
 
 input#cvv {
-	width: 4ex;
+  width: 4ex;
 }
 
 form div.new input:not([type="checkbox"]) {
-	margin-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 input#save {
-	margin-left: 1in;
+  margin-left: 1in;
 }
 
-input#save+label {
-	margin-right: 1em;
+input#save + label {
+  margin-right: 1em;
 }
 
 /* Confirmation */
 div.left {
-	text-align: left;
+  text-align: left;
 }
 
 span.orderID {
-	display: inline-block;
-	border: 2pt solid black;
-	margin-left: 10em;
-	padding: 0.3em;
-	min-width: 5em;
+  display: inline-block;
+  border: 2pt solid black;
+  margin-left: 10em;
+  padding: 0.3em;
+  min-width: 5em;
 }
 
 p.small {
-	font-size: 70%;
+  font-size: 70%;
 }
 
 p.formError {
-	margin-top: 0.2em;
+  margin-top: 0.2em;
 }
 
 /* Order History */
@@ -619,50 +636,74 @@ p.formError {
 
 /* View Revenue Report */
 
-table.revenue, table.popular {
-	text-align: left;
-	width: 100%;
-	border-collapse: collapse;
-	border: 2pt solid black;
+table.revenue,
+table.popular {
+  text-align: left;
+  width: 100%;
+  border-collapse: collapse;
+  border: 2pt solid black;
 }
 
-table.revenue tr:nth-child(2n), table.popular tr:nth-child(2n) {
-	background-color: #eee;
+table.revenue tr:nth-child(2n),
+table.popular tr:nth-child(2n) {
+  background-color: #eee;
 }
 
-table.revenue th, table.revenue td {
-	padding: 0.3em;
-	width: 50%;
+table.revenue th,
+table.revenue td {
+  padding: 0.3em;
+  width: 50%;
 }
 
-table.revenue th, table.popular th {
-	background-color: #ccc;
-	padding-bottom: 0;
+table.revenue th,
+table.popular th {
+  background-color: #ccc;
+  padding-bottom: 0;
 }
 
-table.revenue td:not(:first-child), table.revenue th:not(:first-child), table.popular td:not(:first-child), table.popular th:not(:first-child) {
-	border-left: 2pt solid #000;
+table.revenue td:not(:first-child),
+table.revenue th:not(:first-child),
+table.popular td:not(:first-child),
+table.popular th:not(:first-child) {
+  border-left: 2pt solid #000;
 }
 
-table.revenue+form, table.popular+form {
-	text-align: left;
-	margin: 4em 0 0 4em;
+table.revenue + form,
+table.popular + form {
+  text-align: left;
+  margin: 4em 0 0 4em;
 }
 
 /* View Popular Movie Report */
 
 table.popular tr:not(.first) td:first-child {
-	color: transparent;
+  color: transparent;
 }
 
-table.popular td, table.popular th {
-	padding: 0.3em;
+table.popular td,
+table.popular th {
+  padding: 0.3em;
 }
 
 table.popular th {
-	padding-bottom: 0;
+  padding-bottom: 0;
 }
 
 table.popular tbody {
-	border-collapse: collapse;
+  border-collapse: collapse;
+}
+
+.view-detail {
+  display: flex;
+  justify-content: space-between;
+}
+
+.preferred-theater li {
+  display: flex;
+  align-self: flex-start;
+}
+
+.preferred-theater li label {
+  padding-left: 50px;
+  text-align: left;
 }
