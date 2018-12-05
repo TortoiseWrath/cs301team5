@@ -371,6 +371,18 @@ body.reviews button {
   width: 10em;
 }
 
+/*Give Reviews*/
+body.givereviews {
+  text-align: left;
+}
+
+body.givereviews > h1 {
+  display: inline-block;
+  text-align: left;
+  margin: 0;
+  vertical-align: top;
+}
+
 /* Choose Theater */
 
 h1 + form[method="GET"] {
