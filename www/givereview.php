@@ -27,7 +27,10 @@ if($count < 1){
 <?php
 $title = $_GET['title'];
 ?>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <title>Give Review</title>
+<body class="givereviews">
 <h1><?=$_GET['title']?></h1>
 <form method="POST">
     <label>Rating</label>
@@ -52,6 +55,7 @@ $title = $_GET['title'];
 	<input type="hidden" name="title" value="<?=$_GET['title']?>">
 	<button formaction="review.php">Back</button>
 </form>
+</body>
 
 <?php
     require_once('config.php');
