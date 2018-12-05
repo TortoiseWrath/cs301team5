@@ -616,3 +616,35 @@ p.formError {
   border: 1px solid #000;
   padding: 10px 20px;
 }
+
+/* View Revenue Report */
+
+table.revenue {
+	text-align: left;
+	width: 100%;
+	border: 2pt solid black;
+	border-collapse: collapse;
+}
+
+table.revenue tr:nth-child(2n) {
+	background-color: #eee;
+}
+
+table.revenue th, td {
+	padding: 0.3em;
+	width: 50%;
+}
+
+table.revenue th {
+	background-color: #ccc;
+	padding-bottom: 0;
+}
+
+table.revenue td:not(:first-child), table.revenue th:not(:first-child) {
+	border-left: 2pt solid black;
+}
+
+table.revenue+form {
+	text-align: left;
+	margin: 4em 0 0 4em;
+}
