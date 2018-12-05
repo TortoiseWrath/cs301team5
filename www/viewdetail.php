@@ -24,70 +24,81 @@ if(!isset($_SESSION['username'])) {
     <?php
       require_once('config.php');
 
+      // TODO
+      // Cancel SQL statement
+      // UPDATE ORDERS SET status=Cancelled WHERE orderID=?
+
       $query = $db->prepare('SELECT * FROM ORDERS NATURAL JOIN THEATER NATURAL JOIN MOVIE WHERE orderID=?');
       $query->bind_param('s', $orderID);
       $query->execute();
       $result = $query->get_result()->fetch_assoc();
-
-      print_r($result)
     ?>
 
-    <p><strong><a href="movie.php?title=<?=urlencode($result['title'])?>"><?=htmlspecialchars($result['title'])?></a></strong></p>
-    <p>
-      <span><?=$result['rating']?>, </span>
-      <span>
-        <?php
-          function convertToHoursMins($time, $format = '%2d:%02d') {
-            if ($time < 1) {
-                return;
+    <div class="view-detail">
+      <div class="view-detail__movie">
+        <p><strong><a href="movie.php?title=<?=urlencode($result['title'])?>"><?=htmlspecialchars($result['title'])?></a></strong></p>
+        <p>
+          <span><?=$result['rating']?>, </span>
+          <span>
+            <?php
+              function convertToHoursMins($time, $format = '%2d:%02d') {
+                if ($time < 1) {
+                    return;
+                }
+                $hours = floor($time / 60);
+                $minutes = ($time % 60);
+                return sprintf($format, $hours, $minutes);
             }
-            $hours = floor($time / 60);
-            $minutes = ($time % 60);
-            return sprintf($format, $hours, $minutes);
-        }
 
-          echo convertToHoursMins($result['length'], '%2d hr  %02d min');
-        ?>
-      </span>
-    </p>
+              echo convertToHoursMins($result['length'], '%2d hr  %02d min');
+            ?>
+          </span>
+        </p>
+        <p><?=$result['date']?></p>
+        <p><?=$result['time']?></p>
+      </div>
 
-    <p>Theater: <? echo $result['name'] . ', ' . $result['street'] . ' ' . $result['city'] . ' ' . $result['state'] . ' ' . $result['zip']?></p>
-    <p>Time: <?=$result['date']?> <?=$result['time']?></p>
+      <div class="view-detail__ticket">
+        <p><strong><?=$result['name']?></strong></p>
+        <p><? echo $result['street'] . ' ' . $result['city'] . ' ' . $result['state'] . ' ' . $result['zip']?></p>
+
+        <p>
+          <strong>Tickets: <?=$result['totalTickets']?></strong><br>
+          <?php
+          $query = $db->prepare('SELECT childDiscount, seniorDiscount, cancellationFee FROM SYSTEMINFO');
+          $childDiscount = $seniorDiscount = $cancellationFee = NULL;
+          $query->bind_result($childDiscount, $seniorDiscount, $cancellationFee);
+          $query->execute();
+          $query->fetch();
+          $query->close();
+
+          $childPrice = $result['ticketPrice'] * (100 - $childDiscount) / 100;
+          $seniorPrice = $result['ticketPrice'] * (100 - $seniorDiscount) / 100;
+          $totalPrice = $result['ticketPrice'] * $result['adultTickets'] + $childPrice * $result['childTickets'] + $seniorPrice * $result['seniorTickets'];
+
+          if($result['status'] === 'Cancelled') {
+            $totalPrice = $cancellationFee;
+          }
+
+            if ($result['adultTickets']) {
+              echo $result['adultTickets'] . " adult ticket" . ($result['adultTickets']==1?'':'s') . ": $" . number_format($result['ticketPrice'] * $result['adultTickets'], 2) . "<br>";
+            }
+            if ($result['childTickets']) {
+              echo $result['childTickets'] . " child ticket" . ($result['childTickets']==1?'':'s') . ": $" . number_format($childPrice * $result['childTickets'], 2) . "<br>";
+            }
+            if ($result['seniorTickets']) {
+              echo $result['seniorTickets'] . " senior ticket" . ($result['seniorTickets']==1?'':'s') . ": $" . number_format($seniorPrice * $result['seniorTickets'], 2);
+            }
+          ?>
+        </p>
+
+        <p>
+          Total: $<?=number_format($totalPrice, 2)?>
+        </p>
+      </div>
+    </div>
+    
     <p>Status: <?=$result['status']?></p>
-
-    <p>
-      <strong>Tickets: <?=$result['totalTickets']?></strong><br>
-      <?php
-		  $query = $db->prepare('SELECT childDiscount, seniorDiscount, cancellationFee FROM SYSTEMINFO');
-		  $childDiscount = $seniorDiscount = $cancellationFee = NULL;
-		  $query->bind_result($childDiscount, $seniorDiscount, $cancellationFee);
-		  $query->execute();
-		  $query->fetch();
-		  $query->close();
-
-		  $childPrice = $result['ticketPrice'] * (100 - $childDiscount) / 100;
-		  $seniorPrice = $result['ticketPrice'] * (100 - $seniorDiscount) / 100;
-		  $totalPrice = $result['ticketPrice'] * $result['adultTickets'] + $childPrice * $result['childTickets'] + $seniorPrice * $result['seniorTickets'];
-
-		  if($result['status'] === 'Cancelled') {
-			  $totalPrice = $cancellationFee;
-		  }
-
-        if ($result['adultTickets']) {
-          echo $result['adultTickets'] . " adult ticket" . ($result['adultTickets']==1?'':'s') . ": $" . number_format($result['ticketPrice'] * $result['adultTickets'], 2) . "<br>";
-        }
-        if ($result['childTickets']) {
-          echo $result['childTickets'] . " child ticket" . ($result['childTickets']==1?'':'s') . ": $" . number_format($childPrice * $result['childTickets'], 2) . "<br>";
-        }
-        if ($result['seniorTickets']) {
-          echo $result['seniorTickets'] . " senior ticket" . ($result['seniorTickets']==1?'':'s') . ": $" . number_format($seniorPrice * $result['seniorTickets'], 2);
-        }
-      ?>
-    </p>
-
-	<p>
-		Total: $<?=number_format($totalPrice, 2)?>
-	</p>
 
     <?php
       // TODO: Implement cancelling order
