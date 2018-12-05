@@ -17,15 +17,16 @@ if(!isset($_SESSION['username'])) {
   <body>
     <h1>My Preferred Theater</h1>
 
-	  <form>
+	  <form method="GET">
 	    <ul class="preferred-theater">
 
 	      <?php
         require_once('config.php');
-        
-        // TODO: Delete Preferred Theater
-        // DELETE SQL Statement
-        // DELETE FROM PREFERS WHERE theaterID=? AND username=?
+	  if(isset($_GET['theaterID'])) {
+	      $query = $db->prepare('DELETE FROM PREFERS WHERE theaterID=? AND username=?');
+		   $query->bind_param('ss', $_GET['theaterID'], $_SESSION['username']);
+		  $query->execute();
+	  }
 
         $query = $db->prepare('SELECT theaterID, name, state, city, street, zip FROM THEATER NATURAL JOIN PREFERS WHERE username=?');
         $query->bind_param('s', $_SESSION['username']);
@@ -35,23 +36,20 @@ if(!isset($_SESSION['username'])) {
 
         while($query->fetch()):
 			  ?>
-
-        <li>
-          <input type="radio" name="theater" id="theater<?=$theaterID?>" value="<?=$theaterID?>"></td>
-          <label for="theater<?=$theaterID?>">
-            <p><? echo $name ?></p>
-            <p><? echo $street . ", " . $city . " " . $state . " " . $zip ?></p>
-          </label>
-        </li>
+		  		<li>
+		  			<input type="radio" name="theaterID" value="<?=$theaterID?>" id="theater<?=$theaterID?>">
+		  			<label for="theater<?=$theaterID?>"><strong><?=$name?></strong><address><?="$street, $city, $state $zip"?></address></label>
+		  		</li>
 
 	      <?php endwhile;
         $query->close();
         ?>
 
 	    </ul>
-
-	    <button>Delete</button>
-	    <button formaction="me.php" >Back</button>
+		<div class="preferred">
+		    <button class="space">Delete</button>
+		    <button formaction="me.php" >Back</button>
+		</div>
   	</form>
   </body>
 </html>

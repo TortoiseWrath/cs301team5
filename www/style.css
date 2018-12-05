@@ -697,16 +697,6 @@ table.popular tbody {
   justify-content: space-between;
 }
 
-.preferred-theater li {
-  display: flex;
-  align-self: flex-start;
-}
-
-.preferred-theater li label {
-  padding-left: 50px;
-  text-align: left;
-}
-
 /* Give Review */
 
 body.givereviews {
@@ -747,4 +737,10 @@ form.history>div>span, form.history>div>input {
 	vertical-align: bottom;
 	margin-bottom: 0.5em;
 	display: inline-block;
+}
+
+/* Preferred Theaters */
+div.preferred {
+	width: 100%;
+	text-align: right;
 }
